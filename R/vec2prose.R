@@ -7,7 +7,7 @@
 #' @param x character vector of length > 0 (after removing `NA`s if na.rm = TRUE)
 #' @param oxford_comma logical. If TRUE (default), output includes oxford comma.
 #' @param na.rm logical. If TRUE (Default), remove all `NA` from output.
-#' @param warn logical. If TRUE (Default), warn about NAs occuring in dataste
+#' @param warn logical. If TRUE (Default), warn about `NA`s in `x`.
 #' @returns character vector of length 1.
 #' @export
 #' @examples

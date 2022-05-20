@@ -11,7 +11,7 @@ t3_na <- c("dogs", "cats", "pigs", NA)
 
 # Tests -------------------------------------------------------------------
 
-test_that(" vec2prose() works", {
+test_that("vec2prose() works", {
 
   # errors when not character or of zero length
   expect_error(vec2prose(t0))

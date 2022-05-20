@@ -13,8 +13,8 @@
 #' @examples
 #' x <- c("dogs", "cats", "pigs")
 #'
-#' list_in_prose(x)
-#' list_in_prose(x, oxford_comma = FALSE)
+#' vec2prose(x)
+#' vec2prose(x, oxford_comma = FALSE)
 #'
 vec2prose <- function(x, oxford_comma = TRUE, na.rm = TRUE, warn = TRUE){
 

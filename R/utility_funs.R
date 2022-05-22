@@ -1,6 +1,6 @@
 ## Utility funs to use
 
 #wrapper for any( ..., na.rm)
-any_narm <- function(...) {
+any0 <- function(...) {
   any(..., na.rm = TRUE)
 }

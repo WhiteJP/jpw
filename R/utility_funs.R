@@ -1,6 +1,6 @@
-## Utility funs to use
-
-#wrapper for any( ..., na.rm)
+#' Utility functions
+#'
+#' @export
 any0 <- function(...) {
   any(..., na.rm = TRUE)
 }

@@ -14,7 +14,7 @@ all0 <- function(...) {
   base::all(..., na.rm = TRUE)
 }
 
-#' @describeIn utility_funs replace `NULL` with value
+#' @describeIn utility_funs replace `NULL` with default value
 #' @export
 `%||%` <- function(x, y) if (is.null(x)) y else x
 

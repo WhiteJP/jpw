@@ -18,6 +18,7 @@ all0 <- function(...) {
 #' @export
 `%||%` <- function(x, y) if (is.null(x)) y else x
 
+
 #' Evaluate logical expressions, where NAs proliferate (any NA in = NA out)
 #'
 #' @param x logical expression

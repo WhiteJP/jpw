@@ -29,7 +29,7 @@ install.packages("devtools")
 devtools::install_github("WhiteJP/jpw")
 ```
 
-## Example
+## Examples
 
 Below are some examples of functions in jpw.
 
@@ -50,10 +50,21 @@ y <- c(NA, 9, 8,  7,  5, NA, 4,  3,  2,  1)
 na2na(x > 8 | x == y)
 
 ```
+
 * right and left censor data
 
 ```{r}
 censor_left(1:10, min = 5)
 censor_right(1:10, max = 5)
 ```
+
+* Extract or remove numbers from strings
+
+```{r}
+extract_nums_tgthr(c("sdff234", "12aaa34"))
+extract_nums_all(c("12aaa34", "-12.4 54.3", "adfsdf.344 -1.2 4"))
+remove_nums(c("12aaa34",  "adfsdf.344 -1.2 4"), trimws = TRUE)
+
+```
+
 

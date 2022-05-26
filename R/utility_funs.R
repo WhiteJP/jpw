@@ -14,6 +14,11 @@ all0 <- function(...) {
   base::all(..., na.rm = TRUE)
 }
 
+#' @describeIn utility_funs replace `NULL` with default value
+#' @export
+`%||%` <- function(x, y) if (is.null(x)) y else x
+
+
 #' Evaluate logical expressions, where NAs proliferate (any NA in = NA out)
 #'
 #' @param x logical expression
@@ -33,4 +38,10 @@ na2na <- function(x) {
   out[na_rows] <- NA
   out
 }
+
+#' @describeIn utility_funs check if values are whole numbers
+#' @export
+is_wholenum <-function(x) {
+  abs(x - round(x)) < 1e-16
+  }
 

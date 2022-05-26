@@ -3,11 +3,17 @@
 \name{any0}
 \alias{any0}
 \alias{all0}
+\alias{\%||\%}
+\alias{is_wholenum}
 \title{Utility functions}
 \usage{
 any0(...)
 
 all0(...)
+
+x \%||\% y
+
+is_wholenum(x)
 }
 \description{
 Set of simple utility functions for common use.
@@ -17,5 +23,9 @@ Set of simple utility functions for common use.
 \item \code{any0}: wrapper for \code{any()} with na.rm = TRUE
 
 \item \code{all0}: wrapper for \code{all()} with na.rm = TRUE
+
+\item \code{\%||\%}: replace \code{NULL} with default value
+
+\item \code{is_wholenum}: check if values are whole numbers
 }}
 

@@ -49,6 +49,11 @@ y <- c(NA, 9, 8,  7,  5, NA, 4,  3,  2,  1)
 
 na2na(x > 8 | x == y)
 
+```
+* right and left censor data
 
+```{r}
+censor_left(1:10, min = 5)
+censor_right(1:10, max = 5)
 ```
 

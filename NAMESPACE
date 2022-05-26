@@ -2,5 +2,7 @@
 
 export(all0)
 export(any0)
+export(censor_left)
+export(censor_right)
 export(na2na)
 export(vec2prose)

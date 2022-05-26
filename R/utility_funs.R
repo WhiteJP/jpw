@@ -38,4 +38,9 @@ na2na <- function(x) {
   out
 }
 
+#' @describeIn utility_funs check if values are whole numbers
+#' @export
+is_wholenum <-function(x) {
+  abs(x - round(x)) < 1e-16
+  }
 

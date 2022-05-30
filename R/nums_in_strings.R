@@ -1,6 +1,3 @@
-
-# Copyright 2021 (c) Cogstate Ltd
-
 #'Dealing with strings with numbers
 #'
 #'@param x character vector, or other vector which will be coerced to character

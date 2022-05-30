@@ -10,6 +10,13 @@ normalise(x)
 
 scale_minmax(x, mn, mx)
 }
+\arguments{
+\item{x}{numeric vector}
+
+\item{mn}{numeric scalar. Minimum value of scaled output.}
+
+\item{mx}{numeric scalar. Maximum value of scaled output.}
+}
 \description{
 Statistical calculations
 }

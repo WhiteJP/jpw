@@ -1,6 +1,8 @@
 #'Dealing with strings with numbers
 #'
 #'@param x character vector, or other vector which will be coerced to character
+#'@param trimws logical. whether to call `base::trimws()`, trimming all whitespace
+#' at start of end of string before returning.
 #'@describeIn nums_in_strings remove all the numbers from a string
 #'@export
 remove_nums <- function(x, trimws = FALSE) {

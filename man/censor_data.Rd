@@ -12,7 +12,9 @@ censor_right(x, max)
 \arguments{
 \item{x}{numeric vector}
 
-\item{min/max}{numeric scalar describing the min/max for censoring.}
+\item{min}{numeric scalar describing the minimum value for censoring.}
+
+\item{max}{numeric scalar describing the maximum value for censoring.}
 }
 \description{
 Return censored data

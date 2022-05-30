@@ -14,6 +14,9 @@ extract_nums_all(x)
 }
 \arguments{
 \item{x}{character vector, or other vector which will be coerced to character}
+
+\item{trimws}{logical. whether to call \code{base::trimws()}, trimming all whitespace
+at start of end of string before returning.}
 }
 \description{
 Dealing with strings with numbers

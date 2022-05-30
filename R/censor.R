@@ -1,7 +1,8 @@
 #' Return censored data
 #'
 #' @param x numeric vector
-#' @param min/max numeric scalar describing the min/max for censoring.
+#' @param min numeric scalar describing the minimum value for censoring.
+#' @param max numeric scalar describing the maximum value for censoring.
 #' @describeIn censor_data left censor data (floor)
 #' @export
 censor_left <- function(x, min) {

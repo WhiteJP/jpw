@@ -15,6 +15,9 @@ x \%||\% y
 
 is_wholenum(x)
 }
+\arguments{
+\item{...}{logical expression passed to \code{any()} or \code{all()}}
+}
 \description{
 Set of simple utility functions for common use.
 }

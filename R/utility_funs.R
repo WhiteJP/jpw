@@ -3,6 +3,7 @@
 #' Set of simple utility functions for common use.
 #'
 #' @describeIn utility_funs wrapper for `any()` with na.rm = TRUE
+#' @param ... logical expression passed to `any()` or `all()`
 #' @export
 any0 <- function(...) {
   base::any(..., na.rm = TRUE)

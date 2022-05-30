@@ -11,6 +11,8 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
+devtools::load_all()
 ```
 
 # jpw
@@ -27,6 +29,13 @@ You can install the development version of jpw from [GitHub](https://github.com/
 ```{r, eval = FALSE}
 install.packages("devtools")
 devtools::install_github("WhiteJP/jpw")
+
+```
+
+And load it: 
+
+```{r eval = FALSE}
+library(jpw)
 ```
 
 ## Examples
@@ -36,7 +45,6 @@ Below are some examples of functions in jpw.
 * put vectors in prose format
 
 ```{r examples}
-library(jpw)
 vec2prose(c("Peanut", "Butter", "Jelly"), oxford_comma = FALSE)
 ```
 
@@ -64,6 +72,14 @@ censor_right(1:10, max = 5)
 extract_nums_tgthr(c("sdff234", "12aaa34"))
 extract_nums_all(c("12aaa34", "-12.4 54.3", "adfsdf.344 -1.2 4"))
 remove_nums(c("12aaa34",  "adfsdf.344 -1.2 4"), trimws = TRUE)
+
+```
+
+* scale vectors to have a specified min and max
+
+```{r}
+normalise(1:10) # min = 0 max = 1
+scale_minmax(1:10, mn = -100, mx = 100) # min = `mn`, max = `mx`
 
 ```
 

@@ -18,6 +18,12 @@ install.packages("devtools")
 devtools::install_github("WhiteJP/jpw")
 ```
 
+And load it:
+
+``` r
+library(jpw)
+```
+
 ## Examples
 
 Below are some examples of functions in jpw.
@@ -25,7 +31,6 @@ Below are some examples of functions in jpw.
 -   put vectors in prose format
 
 ``` r
-library(jpw)
 vec2prose(c("Peanut", "Butter", "Jelly"), oxford_comma = FALSE)
 #> [1] "Peanut, Butter and Jelly"
 ```
@@ -66,4 +71,15 @@ extract_nums_all(c("12aaa34", "-12.4 54.3", "adfsdf.344 -1.2 4"))
 #> [1] 344.0  -1.2   4.0
 remove_nums(c("12aaa34",  "adfsdf.344 -1.2 4"), trimws = TRUE)
 #> [1] "aaa"    "adfsdf"
+```
+
+-   scale vectors to have a specified min and max
+
+``` r
+normalise(1:10) # min = 0 max = 1
+#>  [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667
+#>  [8] 0.7777778 0.8888889 1.0000000
+scale_minmax(1:10, mn = -100, mx = 100) # min = `mn`, max = `mx`
+#>  [1] -100.00000  -77.77778  -55.55556  -33.33333  -11.11111   11.11111
+#>  [7]   33.33333   55.55556   77.77778  100.00000
 ```

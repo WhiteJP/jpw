@@ -30,7 +30,18 @@ extract_nums_all <- function(x) {
 
 }
 
-# helper ------------------------------------------------------------------
+#' Extract scientific notation exponent
+#'
+#' @param x string of numbers in scientific notation
+#'
+extract_sci_exp <- function(x) {
+  gsub(".*e", "", as.character(x))
+}
+
+
+
+
+# helpers ------------------------------------------------------------------
 
 f <- function(s, g) {
   st <- g

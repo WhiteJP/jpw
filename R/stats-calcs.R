@@ -20,3 +20,11 @@ scale_minmax <- function(x, mn, mx){
   x_01 <- normalise(x)
   x_01*(mx - mn) + mn
 }
+
+
+#' Get AUC-based effect sizefor wilcoxon rank sum test
+#'
+#' @param x dataframe output from `rstatix::wilcox_test()`
+wilcox_AUC <- function(x) {
+  unname(x[['statistic']]/(x$n1*x$n2))
+}

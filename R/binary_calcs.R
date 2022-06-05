@@ -28,7 +28,7 @@ int2bin <- function(x) {
 #' @return character vector with traling zeros
 #'
 #' @export
-add_zeroes <- function(x, len = max(nchar(x), na.rm = TRUE)) {
+add_zeros <- function(x, len = max(nchar(x), na.rm = TRUE)) {
   n <- nchar(x)
   n0 <- len - n
   z <- vapply(n0, FUN.VALUE = character(1),

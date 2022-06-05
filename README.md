@@ -92,13 +92,12 @@ int2bin(c(12, 5, NA, 90342))
 #> [4] "10110000011100110"
 ```
 
--   add trailing zeroes to integer
+-   add trailing zeros to integer or string
 
 ``` r
 x <- c(100010, 234,  1, 34)
-
-add_zeroes(x) # default to longest nchar in vector
+add_zeros(x) # default to longest nchar in vector
 #> [1] "100010" "000234" "000001" "000034"
-add_zeroes(x, len = 9) # can stipulate longer
+add_zeros(x, len = 9) # can stipulate longer
 #> [1] "000100010" "000000234" "000000001" "000000034"
 ```

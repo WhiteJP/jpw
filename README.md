@@ -83,3 +83,22 @@ scale_minmax(1:10, mn = -100, mx = 100) # min = `mn`, max = `mx`
 #>  [1] -100.00000  -77.77778  -55.55556  -33.33333  -11.11111   11.11111
 #>  [7]   33.33333   55.55556   77.77778  100.00000
 ```
+
+-   convert decimal integer to binary string
+
+``` r
+int2bin(c(12, 5, NA, 90342))
+#> [1] "1100"              "101"               NA                 
+#> [4] "10110000011100110"
+```
+
+-   add trailing zeroes to integer
+
+``` r
+x <- c(100010, 234,  1, 34)
+
+add_zeroes(x) # default to longest nchar in vector
+#> [1] "100010" "000234" "000001" "000034"
+add_zeroes(x, len = 9) # can stipulate longer
+#> [1] "000100010" "000000234" "000000001" "000000034"
+```

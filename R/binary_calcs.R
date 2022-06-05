@@ -3,6 +3,7 @@
 #' @param x  integer to convert to binary
 #' @returns character vector
 #'
+#'@export
 int2bin <- function(x) {
   na <- is.na(x)
   stopifnot("`x` must be a vector of whole numbers" = is_wholenum(x[!na]))
@@ -17,5 +18,22 @@ int2bin <- function(x) {
   })
   out[!na] <- strs
   out
+
+}
+
+#TODO, add in na in na out.
+#' Add trailing zeros
+#'
+#' @param x vector to add trailing zeros
+#' @return character vector with traling zeros
+#'
+#' @export
+add_zeroes <- function(x, len = max(nchar(x), na.rm = TRUE)) {
+  n <- nchar(x)
+  n0 <- len - n
+  z <- vapply(n0, FUN.VALUE = character(1),
+              FUN = function(n0) paste(rep("0",  n0), collapse = ""))
+
+  paste0(z, x)
 
 }

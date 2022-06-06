@@ -46,13 +46,15 @@ na2na(x > 8 | x == y)
 #>  [1]    NA FALSE FALSE    NA  TRUE    NA FALSE FALSE    NA  TRUE
 ```
 
--   right and left censor data
+-   left and right censor data
 
 ``` r
 censor_left(1:10, min = 5)
 #>  [1]  5  5  5  5  5  6  7  8  9 10
 censor_right(1:10, max = 5)
 #>  [1] 1 2 3 4 5 5 5 5 5 5
+censor_both(1:10, min = 3, max = 7)
+#>  [1] 3 3 3 4 5 6 7 7 7 7
 ```
 
 -   Extract or remove numbers from strings
@@ -100,4 +102,11 @@ add_zeros(x) # default to longest nchar in vector
 #> [1] "100010" "000234" "000001" "000034"
 add_zeros(x, len = 9) # can stipulate longer
 #> [1] "000100010" "000000234" "000000001" "000000034"
+```
+
+-   add new element to vector by index position
+
+``` r
+add_by_position(LETTERS[1:6], "NEW", 5)
+#> [1] "A"   "B"   "C"   "D"   "NEW" "E"   "F"
 ```

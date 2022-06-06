@@ -81,6 +81,10 @@ plot.pmf <- function(pmf) {
   )
 }
 
+sample.pmf <- function(pmf, n = 1e6) {
+  sample(pmf$x, size = n, replace = TRUE, prob = pmf$p)
+}
+
 #examples
 # x <- new_pmf(data.frame(x = c(100, 200, 400), p = c(0.5, 0.4, 0.1)))
 #

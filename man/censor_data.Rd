@@ -3,11 +3,14 @@
 \name{censor_left}
 \alias{censor_left}
 \alias{censor_right}
+\alias{censor_both}
 \title{Return censored data}
 \usage{
 censor_left(x, min)
 
 censor_right(x, max)
+
+censor_both(x, min, max)
 }
 \arguments{
 \item{x}{numeric vector}
@@ -24,5 +27,7 @@ Return censored data
 \item \code{censor_left}: left censor data (floor)
 
 \item \code{censor_right}: right censor data (ceiling)
+
+\item \code{censor_both}: left and right censor data (floor and ceiling)
 }}
 

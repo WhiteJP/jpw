@@ -15,3 +15,12 @@ censor_left <- function(x, min) {
 censor_right <- function(x, max) {
   ifelse(x < max, x, max)
 }
+
+#' @describeIn censor_data left and right censor data (floor and ceiling)
+#' @export
+censor_both <- function(x, min, max) {
+  censor_left(
+    censor_right(x, max),
+    min
+    )
+}

@@ -1,4 +1,4 @@
-#' Reverse diagonal of a square matrix
+#' Get Reverse diagonal of a square matrix
 #'
 #' @param n number of rows in matrix. Note, this function forces a square matrix
 #'  with n = p.

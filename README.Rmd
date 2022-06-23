@@ -102,7 +102,13 @@ add_zeros(x, len = 9) # can stipulate longer
 
 ```{r}
 add_by_position(LETTERS[1:6], "NEW", 5)
+```
 
+* get matrix with reverse diagnoal
+
+```{r}
+rev_diag(3)
+rev_diag(6, x = 12)
 ```
 
 

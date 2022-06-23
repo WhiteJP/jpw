@@ -46,3 +46,19 @@ is_wholenum <-function(x) {
   abs(x - round(x)) < 1e-16
   }
 
+#' @describeIn utility_funs enclose string in brackets.
+#' @export
+brackets <- function(x, type = c("smooth", "square", "squiggly")) {
+  type <- match.arg(type)
+  open <- switch(type,
+                 smooth   = "(",
+                 square   = "[",
+                 squiggly = "{")
+  close <- switch(type,
+                  smooth   = ")",
+                  square   = "]",
+                  squiggly = "}")
+
+  paste0(open, as.character(x), close)
+
+}

@@ -111,4 +111,10 @@ rev_diag(3)
 rev_diag(6, x = 12)
 ```
 
+* add brackets
+
+```{r}
+brackets(123)
+brackets("foo", type = "square")
+```
 

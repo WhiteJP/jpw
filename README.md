@@ -128,3 +128,12 @@ rev_diag(6, x = 12)
 #> [5,]    0   12    0    0    0    0
 #> [6,]   12    0    0    0    0    0
 ```
+
+-   add brackets
+
+``` r
+brackets(123)
+#> [1] "(123)"
+brackets("foo", type = "square")
+#> [1] "[foo]"
+```

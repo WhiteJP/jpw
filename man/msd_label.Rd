@@ -12,9 +12,9 @@ msd_label(x, digits = c(2, 2), na.rm = TRUE, label = TRUE)
 \item{digits}{numeric vector of length 2. Digits to round M and SD to
 (in that order). Defaults to \code{c(2, 2)}}
 
-\item{na.rm.}{logical. whether to remove \code{NA}s before calculating M and SD.}
+\item{na.rm}{logical. whether to remove \code{NA}s before calculating M and SD.}
 
-\item{label.}{logical. whether to prepend "M (SD) = " to string}
+\item{label}{logical. whether to prepend "M (SD) = " to string}
 }
 \value{
 string of form "M (SD)"

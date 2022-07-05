@@ -8,6 +8,8 @@ add_zeros(x, len = max(nchar(x), na.rm = TRUE))
 }
 \arguments{
 \item{x}{vector to add trailing zeros}
+
+\item{len}{length of string to be output}
 }
 \value{
 character vector with traling zeros

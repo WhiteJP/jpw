@@ -25,6 +25,7 @@ int2bin <- function(x) {
 #' Add trailing zeros
 #'
 #' @param x vector to add trailing zeros
+#' @param len length of string to be output
 #' @return character vector with traling zeros
 #'
 #' @export

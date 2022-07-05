@@ -36,8 +36,8 @@ wilcox_AUC <- function(x) {
 #' @param x numeric vector
 #' @param digits numeric vector of length 2. Digits to round M and SD to
 #'  (in that order). Defaults to `c(2, 2)`
-#' @param na.rm. logical. whether to remove `NA`s before calculating M and SD.
-#' @param label. logical. whether to prepend "M (SD) = " to string
+#' @param na.rm logical. whether to remove `NA`s before calculating M and SD.
+#' @param label logical. whether to prepend "M (SD) = " to string
 #'
 #' @returns string of form "M (SD)"
 #'

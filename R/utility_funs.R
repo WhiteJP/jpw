@@ -2,8 +2,13 @@
 #'
 #' Set of simple utility functions for common use.
 #'
+#' @name utility_funs
+#' @param a numeric vector
+NULL
+
 #' @describeIn utility_funs wrapper for `any()` with na.rm = TRUE
 #' @param ... logical expression passed to `any()` or `all()`
+#'
 #' @export
 any0 <- function(...) {
   base::any(..., na.rm = TRUE)
@@ -16,6 +21,8 @@ all0 <- function(...) {
 }
 
 #' @describeIn utility_funs replace `NULL` with default value
+#' @param x vector/list to check for `NULL`
+#' @param y value to replace `NULL`s
 #' @export
 `%||%` <- function(x, y) if (is.null(x)) y else x
 
@@ -42,13 +49,14 @@ na2na <- function(x) {
 
 #' @describeIn utility_funs check if values are whole numbers
 #' @export
-is_wholenum <-function(x) {
-  abs(x - round(x)) < 1e-16
+is_wholenum <-function(a) {
+  abs(a - round(a)) < 1e-16
   }
 
 #' @describeIn utility_funs enclose string in brackets.
+#' @param type string. type of bracket to use. Defaults to "smooth".
 #' @export
-brackets <- function(x, type = c("smooth", "square", "squiggly")) {
+brackets <- function(a, type = c("smooth", "square", "squiggly")) {
   type <- match.arg(type)
   open <- switch(type,
                  smooth   = "(",
@@ -59,6 +67,6 @@ brackets <- function(x, type = c("smooth", "square", "squiggly")) {
                   square   = "]",
                   squiggly = "}")
 
-  paste0(open, as.character(x), close)
+  paste0(open, as.character(a), close)
 
 }

@@ -5,7 +5,7 @@
 #' @param position the position in which to add the class
 #' @returns object 'x' but with  new class added
 #' @examples
-#' x <- add_class(tibble(), "NEW", 1)
+#' x <- add_class(tibble::tibble(), "NEW", 1)
 #' class(x)
 #'
 #' @export

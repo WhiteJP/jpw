@@ -18,7 +18,7 @@ mat_five <- matrix(x_five, nrow = 5)
 # Tests -------------------------------------------------------------------
 
 test_that("rev_diag() works", {
-  expect_equal(rev_diag(3), mat)
+  expect_equal(rev_diag(3), mat1)
   expect_equal(rev_diag(5), mat_five)
   expect_equal(rev_diag(3, x = 9), mat9)
 

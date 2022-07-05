@@ -28,3 +28,24 @@ scale_minmax <- function(x, mn, mx){
 wilcox_AUC <- function(x) {
   unname(x[['statistic']]/(x$n1*x$n2))
 }
+
+#' Get M (SD) from numeric vector
+#'
+#' @describeIn stats-calc
+#' @param x numeric vector
+#' @param digits numeric vector of length 2. Digits to round M and SD to
+#'  (in that order). Defaults to `c(2, 2)`
+#' @param na.rm. logical. whether to remove `NA`s before calculating M and SD.
+#' @returns string of form "M (SD)"
+#'
+#' @export
+msd_label <- function(x, digits = c(2, 2), na.rm = TRUE) {
+  m <- mean(x, na.rm = na.rm)
+  sdev <- sd(x, na.rm = na.rm)
+
+  paste(
+    "M (SD) =",
+    round(m, digits[1]),
+    jpw::brackets(round(sdev, digits[2]))
+  )
+}

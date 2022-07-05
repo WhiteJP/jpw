@@ -18,7 +18,7 @@ scale_minmax(x, mn, mx)
 \item{mx}{numeric scalar. Maximum value of scaled output.}
 }
 \description{
-Statistical calculations
+Various stastical calculations.
 }
 \section{Functions}{
 \itemize{

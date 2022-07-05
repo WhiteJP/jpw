@@ -1,5 +1,6 @@
 #' Add a new class to object in addition to existing classes
 #'
+#' @importFrom tibble tibble
 #' @param x object to add class to
 #' @param class string. class to add.
 #' @param position the position in which to add the class

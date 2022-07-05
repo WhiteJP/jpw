@@ -1,6 +1,8 @@
 
 #' Statistical calculations
 #'
+#' Various stastical calculations.
+#'
 #' @name stats-calcs
 NULL
 
@@ -31,7 +33,6 @@ wilcox_AUC <- function(x) {
 
 #' Get M (SD) from numeric vector
 #'
-#' @describeIn stats-calc
 #' @param x numeric vector
 #' @param digits numeric vector of length 2. Digits to round M and SD to
 #'  (in that order). Defaults to `c(2, 2)`
@@ -43,7 +44,7 @@ wilcox_AUC <- function(x) {
 #' @export
 msd_label <- function(x, digits = c(2, 2), na.rm = TRUE, label = TRUE) {
   m <- mean(x, na.rm = na.rm)
-  sdev <- sd(x, na.rm = na.rm)
+  sdev <- stats::sd(x, na.rm = na.rm)
 
   paste(
     if(label) "M (SD) =" else "",

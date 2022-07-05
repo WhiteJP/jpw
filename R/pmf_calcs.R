@@ -51,15 +51,15 @@ quantile.pmf <- function(pmf, prob) {
 }
 
 q1.pmf <- function(pmf) {
-  quantile(pmf,  0.25)
+  stats::quantile(pmf,  0.25)
 }
 
 median.pmf <- function(pmf) {
-  quantile(pmf,  0.5)
+ stats::quantile(pmf,  0.5)
 }
 
 q3.pmf <- function(pmf) {
-  quantile(pmf,  0.75)
+  stats::quantile(pmf,  0.75)
 }
 
 min.pmf <- function(pmf) {
@@ -72,7 +72,7 @@ max.pmf <- function(pmf) {
 
 plot.pmf <- function(pmf) {
   print(
-    pmf %>%
+    pmf |>
       ggplot(aes(x = x, y = p)) +
       geom_bar(stat = "identity", col = "black", fill = "lightblue") +
       labs(x = "Outcome",

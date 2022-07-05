@@ -36,15 +36,17 @@ wilcox_AUC <- function(x) {
 #' @param digits numeric vector of length 2. Digits to round M and SD to
 #'  (in that order). Defaults to `c(2, 2)`
 #' @param na.rm. logical. whether to remove `NA`s before calculating M and SD.
+#' @param label. logical. whether to prepend "M (SD) = " to string
+#'
 #' @returns string of form "M (SD)"
 #'
 #' @export
-msd_label <- function(x, digits = c(2, 2), na.rm = TRUE) {
+msd_label <- function(x, digits = c(2, 2), na.rm = TRUE, label = TRUE) {
   m <- mean(x, na.rm = na.rm)
   sdev <- sd(x, na.rm = na.rm)
 
   paste(
-    "M (SD) =",
+    if(label) "M (SD) =" else "",
     round(m, digits[1]),
     jpw::brackets(round(sdev, digits[2]))
   )

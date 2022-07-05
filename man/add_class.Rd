@@ -20,7 +20,7 @@ object 'x' but with  new class added
 Add a new class to object in addition to existing classes
 }
 \examples{
-x <- add_class(tibble(), "NEW", 1)
+x <- add_class(tibble::tibble(), "NEW", 1)
 class(x)
 
 }

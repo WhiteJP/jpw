@@ -4,7 +4,7 @@
 \alias{msd_label}
 \title{Get M (SD) from numeric vector}
 \usage{
-msd_label(x, digits = c(2, 2), na.rm = TRUE)
+msd_label(x, digits = c(2, 2), na.rm = TRUE, label = TRUE)
 }
 \arguments{
 \item{x}{numeric vector}
@@ -13,6 +13,8 @@ msd_label(x, digits = c(2, 2), na.rm = TRUE)
 (in that order). Defaults to \code{c(2, 2)}}
 
 \item{na.rm.}{logical. whether to remove \code{NA}s before calculating M and SD.}
+
+\item{label.}{logical. whether to prepend "M (SD) = " to string}
 }
 \value{
 string of form "M (SD)"

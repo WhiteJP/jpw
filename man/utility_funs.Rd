@@ -5,6 +5,7 @@
 \alias{all0}
 \alias{\%||\%}
 \alias{is_wholenum}
+\alias{brackets}
 \title{Utility functions}
 \usage{
 any0(...)
@@ -14,6 +15,8 @@ all0(...)
 x \%||\% y
 
 is_wholenum(x)
+
+brackets(x, type = c("smooth", "square", "squiggly"))
 }
 \arguments{
 \item{...}{logical expression passed to \code{any()} or \code{all()}}
@@ -30,5 +33,7 @@ Set of simple utility functions for common use.
 \item \code{\%||\%}: replace \code{NULL} with default value
 
 \item \code{is_wholenum}: check if values are whole numbers
+
+\item \code{brackets}: enclose string in brackets.
 }}
 

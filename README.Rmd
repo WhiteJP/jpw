@@ -118,3 +118,10 @@ brackets(123)
 brackets("foo", type = "square")
 ```
 
+* recursively search environments to find where function defined
+
+```{r}
+where(sum)
+where("sd")
+```
+

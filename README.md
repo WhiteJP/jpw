@@ -137,3 +137,16 @@ brackets(123)
 brackets("foo", type = "square")
 #> [1] "[foo]"
 ```
+
+-   recursively search environments to find where function defined
+
+``` r
+where(sum)
+#> <environment: base>
+where("sd")
+#> <environment: package:stats>
+#> attr(,"name")
+#> [1] "package:stats"
+#> attr(,"path")
+#> [1] "C:/Program Files/R/R-4.2.0/library/stats"
+```

@@ -6,6 +6,7 @@
 \alias{scale_minmax}
 \alias{max_z_given_n}
 \alias{se}
+\alias{lm_r2}
 \title{Statistical calculations}
 \usage{
 normalise(x)
@@ -15,6 +16,8 @@ scale_minmax(x, mn, mx)
 max_z_given_n(n)
 
 se(x, ...)
+
+lm_r2(lm_mod, adjusted = FALSE)
 }
 \arguments{
 \item{x}{numeric vector}
@@ -37,6 +40,8 @@ Various stastical calculations.
 \item \code{max_z_given_n}: Find Maximum z score given sample size n
 
 \item \code{se}: Calculate standard error of mean
+
+\item \code{lm_r2}: get r squared from stats::lm()
 }}
 
 \seealso{

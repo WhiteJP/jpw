@@ -68,4 +68,12 @@ se <- function(x, ...) {
   sqrt(stats::var(x, ...)/length(x))
 }
 
+#' @describeIn stats-calcs get r squared from stats::lm()
+#' @export
+lm_r2 <- function(lm_mod, adjusted = FALSE) {
+  stopifnot("`lm_mod` must be of class `lm`" = inherits(lm_mod, "lm"))
+  msum <-stats::summary.lm(lm_mod)
+  if(adjusted) msum$adj.r.square else msum$r.square
+}
+
 

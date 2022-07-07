@@ -5,6 +5,7 @@
 \alias{normalise}
 \alias{scale_minmax}
 \alias{max_z_given_n}
+\alias{se}
 \title{Statistical calculations}
 \usage{
 normalise(x)
@@ -12,6 +13,8 @@ normalise(x)
 scale_minmax(x, mn, mx)
 
 max_z_given_n(n)
+
+se(x, ...)
 }
 \arguments{
 \item{x}{numeric vector}
@@ -32,6 +35,8 @@ Various stastical calculations.
 \item \code{scale_minmax}: normalise vector so that max = \code{mx} and min = \code{mn}
 
 \item \code{max_z_given_n}: Find Maximum z score given sample size n
+
+\item \code{se}: Calculate standard error of mean
 }}
 
 \seealso{

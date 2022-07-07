@@ -62,4 +62,10 @@ max_z_given_n <- function(n) {
   (n - 1)/ sqrt(n)
 }
 
+#' @describeIn stats-calcs Calculate standard error of mean
+#' @export
+se <- function(x, ...) {
+  sqrt(stats::var(x, ...)/length(x))
+}
+
 

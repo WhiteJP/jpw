@@ -52,3 +52,14 @@ msd_label <- function(x, digits = c(2, 2), na.rm = TRUE, label = TRUE) {
     jpw::brackets(round(sdev, digits[2]))
   )
 }
+
+#' @describeIn stats-calcs Find Maximum z score given sample size n
+#' @param n numeric scalar. sample size.
+#' @seealso https://www.tandfonline.com/doi/abs/10.1080/00031305.1988.10475530
+#' @export
+max_z_given_n <- function(n) {
+  stopifnot("n must be numeric scalar" = length(n) == 1 && is.numeric(n))
+  (n - 1)/ sqrt(n)
+}
+
+

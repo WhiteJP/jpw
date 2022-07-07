@@ -4,11 +4,14 @@
 \alias{stats-calcs}
 \alias{normalise}
 \alias{scale_minmax}
+\alias{max_z_given_n}
 \title{Statistical calculations}
 \usage{
 normalise(x)
 
 scale_minmax(x, mn, mx)
+
+max_z_given_n(n)
 }
 \arguments{
 \item{x}{numeric vector}
@@ -16,6 +19,8 @@ scale_minmax(x, mn, mx)
 \item{mn}{numeric scalar. Minimum value of scaled output.}
 
 \item{mx}{numeric scalar. Maximum value of scaled output.}
+
+\item{n}{numeric scalar. sample size.}
 }
 \description{
 Various stastical calculations.
@@ -25,5 +30,10 @@ Various stastical calculations.
 \item \code{normalise}: normalise vector to max = 1 and min = 0
 
 \item \code{scale_minmax}: normalise vector so that max = \code{mx} and min = \code{mn}
+
+\item \code{max_z_given_n}: Find Maximum z score given sample size n
 }}
 
+\seealso{
+https://www.tandfonline.com/doi/abs/10.1080/00031305.1988.10475530
+}

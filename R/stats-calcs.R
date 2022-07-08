@@ -69,6 +69,10 @@ se <- function(x, ...) {
 }
 
 #' @describeIn stats-calcs get r squared from stats::lm()
+#'
+#' @param lm_mod model output from stats::lm
+#' @param adjusted logical. Whether to return adjusted R (`TRUE`), or non-adjusted
+#'  (`FALSE`). Defaults `FALSE`
 #' @export
 lm_r2 <- function(lm_mod, adjusted = FALSE) {
   stopifnot("`lm_mod` must be of class `lm`" = inherits(lm_mod, "lm"))

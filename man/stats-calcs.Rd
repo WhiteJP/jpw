@@ -30,6 +30,11 @@ mad(x, na.rm = TRUE)
 \item{mx}{numeric scalar. Maximum value of scaled output.}
 
 \item{n}{numeric scalar. sample size.}
+
+\item{lm_mod}{model output from stats::lm}
+
+\item{adjusted}{logical. Whether to return adjusted R (\code{TRUE}), or non-adjusted
+(\code{FALSE}). Defaults \code{FALSE}}
 }
 \description{
 Various stastical calculations.

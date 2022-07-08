@@ -1,7 +1,7 @@
 
 # Copyright 2021 (c) Cogstate Ltd
 
-#' Unnest vectors to data.frame
+#' Unnest vectors
 #'
 #'
 #' @param l list of vectors of same length, although obcsured in levels of nesting

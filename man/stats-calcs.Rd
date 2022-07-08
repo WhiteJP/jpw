@@ -7,6 +7,7 @@
 \alias{max_z_given_n}
 \alias{se}
 \alias{lm_r2}
+\alias{mad}
 \title{Statistical calculations}
 \usage{
 normalise(x)
@@ -18,6 +19,8 @@ max_z_given_n(n)
 se(x, ...)
 
 lm_r2(lm_mod, adjusted = FALSE)
+
+mad(x, na.rm = TRUE)
 }
 \arguments{
 \item{x}{numeric vector}
@@ -42,6 +45,8 @@ Various stastical calculations.
 \item \code{se}: Calculate standard error of mean
 
 \item \code{lm_r2}: get r squared from stats::lm()
+
+\item \code{mad}: get median absolute deviation
 }}
 
 \seealso{

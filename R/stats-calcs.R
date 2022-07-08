@@ -76,4 +76,11 @@ lm_r2 <- function(lm_mod, adjusted = FALSE) {
   if(adjusted) msum$adj.r.square else msum$r.square
 }
 
+#' @describeIn stats-calcs get median absolute deviation
+#' @export
+mad <- function(x, na.rm = TRUE) {
+  abs_dev <- abs(x - stats::median(x, na.rm = na.rm))
+  stats::median(abs_dev)
+}
+
 

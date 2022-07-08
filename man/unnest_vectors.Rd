@@ -2,7 +2,7 @@
 % Please edit documentation in R/unnest-vectors.R
 \name{unnest_vectors}
 \alias{unnest_vectors}
-\title{Unnest vectors to data.frame}
+\title{Unnest vectors}
 \usage{
 unnest_vectors(l)
 }
@@ -13,7 +13,7 @@ unnest_vectors(l)
 list of vectors without any nesting.
 }
 \description{
-Unnest vectors to data.frame
+Unnest vectors
 }
 \examples{
 x <- stats::runif(10)

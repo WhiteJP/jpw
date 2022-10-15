@@ -21,3 +21,20 @@ test_that("scale_min_max works ", {
   )
 })
 
+test_that("log10() works ", {
+  expect_equal(
+    log(0:10, base = 10),
+    log10(0:10)
+  )
+  expect_warning(
+    log10(-5)
+  )
+  expect_error(
+    log10(NULL)
+  )
+  expect_error(
+    log10("hello")
+  )
+})
+
+

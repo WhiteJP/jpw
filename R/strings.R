@@ -1,0 +1,8 @@
+capitalise_first_letter <- function(x, rest_down = TRUE) {
+  substr(x, 1, 1) <- toupper(substr(x, 1, 1))
+  if(rest_down) {
+    n <- nchar(x)
+    substr(x, 2, n) <- tolower(substr(x, 2, n))
+  }
+  x
+}

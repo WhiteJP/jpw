@@ -88,3 +88,13 @@ mad <- function(x, na.rm = TRUE) {
 }
 
 
+#' @describeIn stats-calcs Log(x, base = 10) wrapper
+#' @export
+log10 <- function(x){
+  log(x, base = 10)
+}
+
+#' @describeIn stats-calcs symmetrical setdiff()
+#' @export
+sym_setdiff <- function(a,b) c(setdiff(a,b), setdiff(b,a))
+

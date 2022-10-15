@@ -35,14 +35,14 @@ Set of simple utility functions for common use.
 }
 \section{Functions}{
 \itemize{
-\item \code{any0}: wrapper for \code{any()} with na.rm = TRUE
+\item \code{any0()}: wrapper for \code{any()} with na.rm = TRUE
 
-\item \code{all0}: wrapper for \code{all()} with na.rm = TRUE
+\item \code{all0()}: wrapper for \code{all()} with na.rm = TRUE
 
-\item \code{\%||\%}: replace \code{NULL} with default value
+\item \code{x \%||\% y}: replace \code{NULL} with default value
 
-\item \code{is_wholenum}: check if values are whole numbers
+\item \code{is_wholenum()}: check if values are whole numbers
 
-\item \code{brackets}: enclose string in brackets.
+\item \code{brackets()}: enclose string in brackets.
+
 }}
-

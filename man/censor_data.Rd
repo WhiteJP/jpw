@@ -24,10 +24,10 @@ Return censored data
 }
 \section{Functions}{
 \itemize{
-\item \code{censor_left}: left censor data (floor)
+\item \code{censor_left()}: left censor data (floor)
 
-\item \code{censor_right}: right censor data (ceiling)
+\item \code{censor_right()}: right censor data (ceiling)
 
-\item \code{censor_both}: left and right censor data (floor and ceiling)
+\item \code{censor_both()}: left and right censor data (floor and ceiling)
+
 }}
-

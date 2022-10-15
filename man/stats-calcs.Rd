@@ -8,6 +8,8 @@
 \alias{se}
 \alias{lm_r2}
 \alias{mad}
+\alias{log10}
+\alias{sym_setdiff}
 \title{Statistical calculations}
 \usage{
 normalise(x)
@@ -21,6 +23,10 @@ se(x, ...)
 lm_r2(lm_mod, adjusted = FALSE)
 
 mad(x, na.rm = TRUE)
+
+log10(x)
+
+sym_setdiff(a, b)
 }
 \arguments{
 \item{x}{numeric vector}
@@ -41,19 +47,23 @@ Various stastical calculations.
 }
 \section{Functions}{
 \itemize{
-\item \code{normalise}: normalise vector to max = 1 and min = 0
+\item \code{normalise()}: normalise vector to max = 1 and min = 0
 
-\item \code{scale_minmax}: normalise vector so that max = \code{mx} and min = \code{mn}
+\item \code{scale_minmax()}: normalise vector so that max = \code{mx} and min = \code{mn}
 
-\item \code{max_z_given_n}: Find Maximum z score given sample size n
+\item \code{max_z_given_n()}: Find Maximum z score given sample size n
 
-\item \code{se}: Calculate standard error of mean
+\item \code{se()}: Calculate standard error of mean
 
-\item \code{lm_r2}: get r squared from stats::lm()
+\item \code{lm_r2()}: get r squared from stats::lm()
 
-\item \code{mad}: get median absolute deviation
+\item \code{mad()}: get median absolute deviation
+
+\item \code{log10()}: Log(x, base = 10) wrapper
+
+\item \code{sym_setdiff()}: symmetrical setdiff()
+
 }}
-
 \seealso{
 https://www.tandfonline.com/doi/abs/10.1080/00031305.1988.10475530
 }

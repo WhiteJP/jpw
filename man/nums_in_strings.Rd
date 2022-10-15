@@ -23,12 +23,12 @@ Dealing with strings with numbers
 }
 \section{Functions}{
 \itemize{
-\item \code{remove_nums}: remove all the numbers from a string
+\item \code{remove_nums()}: remove all the numbers from a string
 
-\item \code{extract_nums_tgthr}: extract the numbers from a string all together
+\item \code{extract_nums_tgthr()}: extract the numbers from a string all together
 (i.e. \verb{12aaa34} -> \code{1234})
 
-\item \code{extract_nums_all}: extract all the separate numbers from a string.
+\item \code{extract_nums_all()}: extract all the separate numbers from a string.
 returns list of numeric vectors. (i.e., 12aaa34 -> \verb{[1] 12 [2] 34})
-}}
 
+}}

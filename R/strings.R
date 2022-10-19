@@ -6,3 +6,9 @@ capitalise_first_letter <- function(x, rest_down = TRUE) {
   }
   x
 }
+
+clean_name <- function(x) {
+  x <- gsub("[[:punct:]]+|\\s+|\\s$", " ", x)
+  x <- gsub("\\s$", "", x)
+  jpw::capitalise_first_letter(x)
+}

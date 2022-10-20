@@ -18,3 +18,19 @@ clean_name <- function(x) {
   x <- gsub("\\s$", "", x)
   jpw::capitalise_first_letter(x)
 }
+
+
+str_wrap <- function(x, wrap) {
+  paste0(wrap, x, wrap)
+}
+
+#quote
+q <- function(x){
+  str_wrap(x, "'")
+}
+
+#backticks
+bt <- function(x){
+  str_wrap(x, "`")
+}
+

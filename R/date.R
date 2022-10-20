@@ -14,3 +14,15 @@ date_prose <- function(x, full_month = TRUE) {
   fmt <- if(full_month) "%d %B %Y" else "%d %b %Y"
   format(x, fmt)
 }
+
+#'Get today's date in prose format
+#'
+#'@inheritParams date_prose
+#'@examples
+#'today()
+#'
+#'@export
+
+today <- function(full_month = TRUE) {
+  date_prose(Sys.Date(), full_month = full_month)
+}

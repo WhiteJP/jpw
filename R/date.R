@@ -22,7 +22,6 @@ date_prose <- function(x, full_month = TRUE) {
 #'today()
 #'
 #'@export
-
 today <- function(full_month = TRUE) {
   date_prose(Sys.Date(), full_month = full_month)
 }

@@ -2,16 +2,16 @@
 % Please edit documentation in R/date.R
 \name{today}
 \alias{today}
-\title{Get today's date in nice format}
+\title{Get today's date in prose format}
 \usage{
 today(full_month = TRUE)
 }
 \arguments{
-\item{full_month}{whether to return full name of month or shortened version
-(e.g,. "Oct")}
+\item{full_month}{logical whether to return full name of month or
+shortened version (e.g,. "Oct")}
 }
 \description{
-Get today's date in nice format
+Get today's date in prose format
 }
 \examples{
 today()

@@ -31,6 +31,10 @@ mean.pmf <- function(pmf) {
 # this is population variance! not sample like stats::var
 # but given we have pmf this is what we want.
 # could give option to choose TODO
+median.pmf <- function(pmf) {
+  quantile.pmf(pmf,  0.5)
+}
+
 var.pmf <- function(pmf) {
   s <- (pmf$x - mean(pmf))^2
   ws <- s %*% pmf$p
@@ -61,15 +65,11 @@ quantile.pmf <- function(pmf, prob) {
 }
 
 q1.pmf <- function(pmf) {
-  stats::quantile(pmf,  0.25)
-}
-
-median.pmf <- function(pmf) {
- stats::quantile(pmf,  0.5)
+  quantile.pmf(pmf,  0.25)
 }
 
 q3.pmf <- function(pmf) {
-  stats::quantile(pmf,  0.75)
+  quantile.pmf(pmf,  0.75)
 }
 
 min.pmf <- function(pmf) {

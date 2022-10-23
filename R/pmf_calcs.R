@@ -35,6 +35,8 @@ create_pmf <- function(x, p) {
   }
 }
 
+# Methods for common R generics
+
 mean.pmf <- function(pmf) {
   as.numeric(pmf$x %*% pmf$p)
 }
@@ -55,6 +57,25 @@ plot.pmf <- function(pmf, title = "", colour = "lightblue") {
     ) +
     theme_minimal()
   return(p)
+}
+
+# make it so that when you assign it doesn't return.
+# need to properly figure that out.
+summary.pmf <- function(pmf, ...) {
+
+  m   <- mean(pmf)
+  sd  <- sd.pmf(pmf)
+  mad <- mad.pmf(pmf, ...)
+  min <- min.pmf(pmf)
+  Q1  <- q1.pmf(pmf)
+  mdn <- median(pmf)
+  Q3  <- q3.pmf(pmf)
+  max <- max.pmf(pmf)
+
+  smry <- data.frame(m, sd, mdn, mad, min, Q1, Q2 = mdn, Q3, max)
+  print(smry, row.names = FALSE)
+
+  invisible(smry)
 }
 
 var.pmf <- function(pmf) {

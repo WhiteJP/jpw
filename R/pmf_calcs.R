@@ -24,6 +24,19 @@ validate_pmf <- function(x) {
 
 # methods - note some of these funcitons are generics (var, sd, min, max)
 # figure out what to do with them
+### user facing  wrapper for using
+create_pmf <- function(x, p) {
+  if(missing(p)) {
+    stopifnot(is.numeric(x))
+    ft <- as.data.frame(table(x)/length(x), stringsAsFactors = FALSE)
+    names(ft) <- c("x", "p")
+    new_pmf(ft)
+  } else {
+    stopifnot(length(x) == length(p))
+    new_pmf(data.frame(x = x, p = p))
+  }
+}
+
 mean.pmf <- function(pmf) {
   as.numeric(pmf$x %*% pmf$p)
 }

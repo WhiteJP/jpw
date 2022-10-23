@@ -43,6 +43,20 @@ median.pmf <- function(pmf) {
   quantile.pmf(pmf,  0.5)
 }
 
+plot.pmf <- function(pmf, title = "", colour = "lightblue") {
+  requireNamespace("ggplot2")
+  p <- pmf |>
+    ggplot2::ggplot(aes(x = x, y = p)) +
+    ggplot2::geom_bar(stat = "identity", col = "black", fill = colour) +
+    ggplot2::labs(
+      title = title,
+      x = "Outcome ($)",
+      y = "Probability"
+    ) +
+    theme_minimal()
+  return(p)
+}
+
 var.pmf <- function(pmf) {
   s <- (pmf$x - mean(pmf))^2
   ws <- s %*% pmf$p
@@ -86,17 +100,6 @@ min.pmf <- function(pmf) {
 
 max.pmf <- function(pmf) {
   max(pmf$x)
-}
-
-plot.pmf <- function(pmf) {
-  print(
-    pmf |>
-      ggplot(aes(x = x, y = p)) +
-      geom_bar(stat = "identity", col = "black", fill = "lightblue") +
-      labs(x = "Outcome",
-           y = "Probability") +
-      theme_minimal()
-  )
 }
 
 sample.pmf <- function(pmf, n = 1e6) {

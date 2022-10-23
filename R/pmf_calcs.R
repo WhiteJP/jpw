@@ -78,6 +78,21 @@ summary.pmf <- function(pmf, ...) {
   invisible(smry)
 }
 
+print.pmf <- function(pmf) {
+  cat("Probability Mass Function:\n")
+  print.data.frame(pmf, row.names = FALSE)
+  cat("\nSome summary statistics for this PMF:\n")
+  summary(pmf)
+
+  invisible(pmf)
+}
+
+
+
+
+## Functions for pmfs
+
+#pop var
 var.pmf <- function(pmf) {
   s <- (pmf$x - mean(pmf))^2
   ws <- s %*% pmf$p
@@ -126,6 +141,7 @@ max.pmf <- function(pmf) {
 sample.pmf <- function(pmf, n = 1e6) {
   sample(pmf$x, size = n, replace = TRUE, prob = pmf$p)
 }
+
 
 #examples
 # x <- new_pmf(data.frame(x = c(100, 200, 400), p = c(0.5, 0.4, 0.1)))

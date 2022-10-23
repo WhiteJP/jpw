@@ -42,6 +42,16 @@ sd.pmf <- function(pmf) {
   sqrt(var.pmf(pmf))
 }
 
+# Do i need a scaling factor like in stats::mad
+# add it in for now but keep degault as one
+mad.pmf <- function(pmf, center = median(pmf), constant = 1) {
+  absdev <- abs(pmf$x - center)
+  mad <- median(
+    new_pmf(data.frame(x = absdev, p = pmf$p))
+    )
+  mad * constant
+}
+
 quantile.pmf <- function(pmf, prob) {
   pmf <- pmf[order(pmf$x),]
   cs <- cumsum(pmf$p)

@@ -140,22 +140,6 @@ mad.pmf <- function(pmf, center = median(pmf), constant = 1) {
   mad * constant
 }
 
-quantile.pmf <- function(pmf, prob) {
-  pmf <- pmf[order(pmf$x),]
-  cs <- cumsum(pmf$p)
-  res <- min(which(cs > prob))
-
-  pmf$x[[res]]
-}
-
-q1.pmf <- function(pmf) {
-  quantile.pmf(pmf,  0.25)
-}
-
-q3.pmf <- function(pmf) {
-  quantile.pmf(pmf,  0.75)
-}
-
 min.pmf <- function(pmf) {
   min(pmf$x)
 }

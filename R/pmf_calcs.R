@@ -22,7 +22,21 @@ validate_pmf <- function(x) {
  x
 }
 
-### user facing  wrapper for using
+
+#' Create pmf object
+#'
+#' @param x either a sample of values from which to estimate a PMF based on frequency
+#'   if `p` is missing, or unique `x` values with probability `p`
+#' @param the probabilty of each unqiue value of `x` occuring
+#'
+#' @returns `data.frame` of class `pmf`
+#'
+#' @export
+#' @examples
+#' samp <- sample(c(-1000, 100, 800), size = 1e4, replace = TRUE)
+#' pmf(samp)
+#' pmf(x = c(-1000, 100, 800), p = c(0.25, 0.5, 0.25))
+
 pmf <- function(x, p) {
   if(missing(p)) {
     stopifnot(is.numeric(x))

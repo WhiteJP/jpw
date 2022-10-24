@@ -98,3 +98,16 @@ log10 <- function(x){
 #' @export
 sym_setdiff <- function(a,b) c(setdiff(a,b), setdiff(b,a))
 
+
+#' @describeIn stats-calcs quantile wrapper for Q1
+#' @export
+q1 <- function(x) {
+  quantile(x,  0.25)
+}
+
+#' @describeIn stats-calcs quantile wrapper for Q3
+#' @export
+q3 <- function(pmf) {
+  quantile(pmf,  0.75)
+}
+

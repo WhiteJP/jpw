@@ -93,9 +93,9 @@ summary.pmf <- function(pmf, ...) {
   sd  <- sd.pmf(pmf)
   mad <- mad.pmf(pmf, ...)
   min <- min.pmf(pmf)
-  Q1  <- q1.pmf(pmf)
+  Q1  <- q1(pmf)
   mdn <- median(pmf)
-  Q3  <- q3.pmf(pmf)
+  Q3  <- q3(pmf)
   max <- max.pmf(pmf)
 
   smry <- data.frame(m, sd, mdn, mad, min, Q1, Q2 = mdn, Q3, max)

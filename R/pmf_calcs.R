@@ -9,16 +9,16 @@ new_pmf <- function(x = data.frame(x = numeric(0), p = numeric(0))) {
   structure(x, class = c("pmf", "data.frame"))
 }
 
-#validator - imp
-# should make sure we order too
-#make sure this is ok - think more about how to do checks.
+# Validator
+# TODO give better error messages
 validate_pmf <- function(x) {
   stopifnot(inherits(x, "data.frame")) # must be df too
   stopifnot(ncol(x) == 2) # must be two cols
   stopifnot(is.numeric(x[[1]])) # first col must be numeric
   stopifnot(is.numeric(x[[2]])) # second col must be numeric
-  stopifnot(x[[2]] >= 0, x[[2]] <= 1) # no prob can be out of 0-1
-  stopifnot(sum(x[[2]]) == 1) # probs must add to 1
+  stopifnot(x[[2]] >= 0 & x[[2]] <= 1) # no prob can be out of 0-1
+  stopifnot(sum(x[[2]]) == 1 | !length(x[[2]])) # probs must add to 1 length(x[[2]]))
+                        # also allow it to add to zero so we can create empty pmf
  x
 }
 

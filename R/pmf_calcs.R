@@ -56,7 +56,19 @@ mean.pmf <- function(pmf) {
 }
 
 median.pmf <- function(pmf) {
-  quantile.pmf(pmf,  0.5)
+  quantile(pmf,  0.5)
+}
+
+quantile.pmf <- function(pmf, prob) {
+  if(missing(prob)) {
+    stop("Must supply `prob` argument to quantile function")
+  }
+  if(!is.unsorted(pmf$x)) {
+    stop("PMF must be sorted. Creating one with pmf() will ensure this.")
+  }
+  cs <- cumsum(pmf$p)
+  res <- min(which(cs > prob))
+  pmf$x[[res]]
 }
 
 plot.pmf <- function(pmf, title = "", colour = "lightblue") {

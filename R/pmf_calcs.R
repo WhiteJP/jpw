@@ -3,9 +3,9 @@
 
 # contructor
 new_pmf <- function(x = data.frame(x = numeric(0), p = numeric(0))) {
-  stopifnot(is.data.frame(x))
-  x[[1]] <- as.numeric(x[[1]])
-  x[[2]] <- as.numeric(x[[2]])
+  x <- as.data.frame(x)
+  colnames(x) <- c("x", "p")
+  x <- x[order(x[[1]]),]
   structure(x, class = c("pmf", "data.frame"))
 }
 

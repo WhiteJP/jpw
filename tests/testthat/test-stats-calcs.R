@@ -37,4 +37,25 @@ test_that("log10() works ", {
   )
 })
 
+test_that("as_numeric2 works ", {
+  expect_equal(
+    as_numeric2(factor(1:4 *100)),
+    1:4 * 100
+  )
+  #warning when trying to convert things that can't be coerced
+  expect_warning(
+    as_numeric2(factor(LETTERS)),
+  )
+  expect_equal(
+    as_numeric2(c("100", "200", "300", "400")),
+    1:4 * 100
+  )
+  # wont work for logical values stored as a factor
+  # this is consistent with trying to convert to double from
+  # a character vector of "TRUE", "FALSE"
+  expect_warning(
+    as_numeric2(factor(c(TRUE, FALSE)))
+  )
+})
+
 

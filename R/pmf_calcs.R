@@ -19,6 +19,7 @@ validate_pmf <- function(x) {
   stopifnot(x[[2]] >= 0 & x[[2]] <= 1) # no prob can be out of 0-1
   stopifnot(sum(x[[2]]) == 1 | !length(x[[2]])) # probs must add to 1 length(x[[2]]))
                         # also allow it to add to zero so we can create empty pmf
+  stopifnot(!is.unsorted(x[[1]])) # must be sorted
  x
 }
 
@@ -104,20 +105,20 @@ summary.pmf <- function(pmf, ...) {
   invisible(smry)
 }
 
+
+# could improve this so that it prints in columns when it is long
+# could see how it is done for print.data.frame and improve.
 print.pmf <- function(pmf) {
   cat("Probability Mass Function:\n")
   print.data.frame(pmf, row.names = FALSE)
-  cat("\nSome summary statistics for this PMF:\n")
-  summary(pmf)
+  #cat("\nSome summary statistics for this PMF:\n")
+  #summary(pmf)
 
   invisible(pmf)
 }
 
 
-
-
-## Functions for pmfs
-
+## Functions
 #pop var
 var.pmf <- function(pmf) {
   s <- (pmf$x - mean(pmf))^2

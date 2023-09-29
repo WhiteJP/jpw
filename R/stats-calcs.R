@@ -20,12 +20,19 @@ normalise <- function(
 }
 
 #' @describeIn stats-calcs normalise vector so that max = `mx` and min = `mn`
-#' @param mn numeric scalar. Minimum value of scaled output.
-#' @param mx numeric scalar. Maximum value of scaled output.
+#' @param x
+#' @param out_min numeric scalar. Minimum value of scaled output.
+#' @param out_max numeric scalar. Maximum value of scaled output.
 #' @export
-scale_minmax <- function(x, mn, mx){
-  x_01 <- normalise(x)
-  x_01*(mx - mn) + mn
+scale_minmax <- function(
+    x,
+    out_min,
+    out_max,
+    in_min = min(x, na.rm = TRUE),
+    in_max = max(x, na.rm = TRUE)
+){
+  x_01 <- normalise(x, in_min, in_max)
+  x_01*(out_max - out_min) + out_min
 }
 
 

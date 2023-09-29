@@ -6,12 +6,13 @@
 #' @name stats-calcs
 NULL
 
-#' @describeIn stats-calcs normalise vector to max = 1 and min = 0
+#' @describeIn stats-calcs normalise vector to scale [0, 1]
 #' @param x numeric vector
+#' @param in_min minimum possible value of input, defaults to min(x, na.rm = TRUE)
+#' @param in_max maximum possible value of input, defaults to max(x, na.rm = TRUE)
 #' @export
-normalise <- function(x) {
-  y <- x/(max(x, na.rm = TRUE) - min(x, na.rm = TRUE))
-  y - min(y, na.rm = TRUE)
+normalise <- function(x, in_min = min(x, na.rm = TRUE), in_min = max(x, na.rm = TRUE)) {
+  x/(mx - mn) - 1/(mx - mn)
 }
 
 #' @describeIn stats-calcs normalise vector so that max = `mx` and min = `mn`

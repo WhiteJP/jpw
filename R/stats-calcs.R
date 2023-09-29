@@ -11,7 +11,11 @@ NULL
 #' @param in_min minimum possible value of input, defaults to min(x, na.rm = TRUE)
 #' @param in_max maximum possible value of input, defaults to max(x, na.rm = TRUE)
 #' @export
-normalise <- function(x, in_min = min(x, na.rm = TRUE), in_min = max(x, na.rm = TRUE)) {
+normalise <- function(
+    x,
+    in_min = min(x, na.rm = TRUE),
+    in_max = max(x, na.rm = TRUE)
+) {
   x/(mx - mn) - 1/(mx - mn)
 }
 

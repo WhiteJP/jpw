@@ -16,7 +16,7 @@ normalise <- function(
     in_min = min(x, na.rm = TRUE),
     in_max = max(x, na.rm = TRUE)
 ) {
-  x/(mx - mn) - 1/(mx - mn)
+  x/(in_max - in_min) - (in_min/(in_max - in_min))
 }
 
 #' @describeIn stats-calcs normalise vector so that max = `mx` and min = `mn`

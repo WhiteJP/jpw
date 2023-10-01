@@ -6,7 +6,7 @@
 #' @name stats-calcs
 NULL
 
-#' @describeIn stats-calcs normalise vector to scale [0, 1]
+#' @describeIn stats-calcs normalise vector to scale \[0, 1\]
 #' @param x numeric vector
 #' @param in_min minimum possible value of input, defaults to min(x, na.rm = TRUE)
 #' @param in_max maximum possible value of input, defaults to max(x, na.rm = TRUE)
@@ -20,7 +20,6 @@ normalise <- function(
 }
 
 #' @describeIn stats-calcs normalise vector so that max = `mx` and min = `mn`
-#' @param x
 #' @param out_min numeric scalar. Minimum value of scaled output.
 #' @param out_max numeric scalar. Maximum value of scaled output.
 #' @export
@@ -123,7 +122,7 @@ q3 <- function(pmf) {
   quantile(pmf,  0.75)
 }
 
-#' @describeIn estimate standard error of estimate p value from Fisherian randomization inference
+#' @describeIn stats-calcs estimate standard error of estimate p value from Fisherian randomization inference
 #' @param p_est,k estimated p value from Fisherian randomization inference from K iterations
 #' @export
 p_se <- function(p_est, k) {

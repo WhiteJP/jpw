@@ -10,11 +10,20 @@
 \alias{mad}
 \alias{log10}
 \alias{sym_setdiff}
+\alias{q1}
+\alias{q3}
+\alias{p_se}
 \title{Statistical calculations}
 \usage{
-normalise(x)
+normalise(x, in_min = min(x, na.rm = TRUE), in_max = max(x, na.rm = TRUE))
 
-scale_minmax(x, mn, mx)
+scale_minmax(
+  x,
+  out_min,
+  out_max,
+  in_min = min(x, na.rm = TRUE),
+  in_max = max(x, na.rm = TRUE)
+)
 
 max_z_given_n(n)
 
@@ -27,13 +36,23 @@ mad(x, na.rm = TRUE)
 log10(x)
 
 sym_setdiff(a, b)
+
+q1(x)
+
+q3(pmf)
+
+p_se(p_est, k)
 }
 \arguments{
 \item{x}{numeric vector}
 
-\item{mn}{numeric scalar. Minimum value of scaled output.}
+\item{in_min}{minimum possible value of input, defaults to min(x, na.rm = TRUE)}
 
-\item{mx}{numeric scalar. Maximum value of scaled output.}
+\item{in_max}{maximum possible value of input, defaults to max(x, na.rm = TRUE)}
+
+\item{out_min}{numeric scalar. Minimum value of scaled output.}
+
+\item{out_max}{numeric scalar. Maximum value of scaled output.}
 
 \item{n}{numeric scalar. sample size.}
 
@@ -41,13 +60,15 @@ sym_setdiff(a, b)
 
 \item{adjusted}{logical. Whether to return adjusted R (\code{TRUE}), or non-adjusted
 (\code{FALSE}). Defaults \code{FALSE}}
+
+\item{p_est, k}{estimated p value from Fisherian randomization inference from K iterations}
 }
 \description{
 Various stastical calculations.
 }
 \section{Functions}{
 \itemize{
-\item \code{normalise()}: normalise vector to max = 1 and min = 0
+\item \code{normalise()}: normalise vector to scale [0, 1]
 
 \item \code{scale_minmax()}: normalise vector so that max = \code{mx} and min = \code{mn}
 
@@ -62,6 +83,12 @@ Various stastical calculations.
 \item \code{log10()}: Log(x, base = 10) wrapper
 
 \item \code{sym_setdiff()}: symmetrical setdiff()
+
+\item \code{q1()}: quantile wrapper for Q1
+
+\item \code{q3()}: quantile wrapper for Q3
+
+\item \code{p_se()}: estimate standard error of estimate p value from Fisherian randomization inference
 
 }}
 \seealso{

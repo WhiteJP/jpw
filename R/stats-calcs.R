@@ -123,3 +123,11 @@ q3 <- function(pmf) {
   quantile(pmf,  0.75)
 }
 
+#' @describeIn estimate standard error of estimate p value from Fisherian randomization inference
+#' @param p_est,k estimated p value from Fisherian randomization inference from K iterations
+#' @export
+p_se <- function(p_est, k) {
+  sqrt(p_est*(1-p_est)/k)
+}
+
+

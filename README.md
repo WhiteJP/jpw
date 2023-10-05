@@ -28,25 +28,9 @@ library(jpw)
 
 Below are some examples of functions in jpw.
 
--   put vectors in prose format
+### Simple statistical calcluations
 
-``` r
-vec2prose(c("Peanut", "Butter", "Jelly"), oxford_comma = FALSE)
-#> [1] "Peanut, Butter and Jelly"
-```
-
--   evaluate logical expressions where NAs proliferate. NA in any part
-    of input -\> NA in output.
-
-``` r
-x <- c(1,  2, 3, NA,  5, NA, 7,  8, NA, 10)
-y <- c(NA, 9, 8,  7,  5, NA, 4,  3,  2,  1)
-
-na2na(x > 8 | x == y)
-#>  [1]    NA FALSE FALSE    NA  TRUE    NA FALSE FALSE    NA  TRUE
-```
-
--   left and right censor data
+- left and right censor data
 
 ``` r
 censor_left(1:10, min = 5)
@@ -57,7 +41,38 @@ censor_both(1:10, min = 3, max = 7)
 #>  [1] 3 3 3 4 5 6 7 7 7 7
 ```
 
--   Extract or remove numbers from strings
+- scale vectors to have a specified min and max
+
+``` r
+normalise(1:10) # min = 0 max = 1
+#>  [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667
+#>  [8] 0.7777778 0.8888889 1.0000000
+scale_minmax(1:10, out_min = -100, out_max = 100) # min = `mn`, max = `mx`
+#>  [1] -100.00000  -77.77778  -55.55556  -33.33333  -11.11111   11.11111
+#>  [7]   33.33333   55.55556   77.77778  100.00000
+```
+
+### Other
+
+- put vectors in prose format
+
+``` r
+vec2prose(c("Peanut", "Butter", "Jelly"), oxford_comma = FALSE)
+#> [1] "Peanut, Butter and Jelly"
+```
+
+- evaluate logical expressions where NAs proliferate. NA in any part of
+  input -\> NA in output.
+
+``` r
+x <- c(1,  2, 3, NA,  5, NA, 7,  8, NA, 10)
+y <- c(NA, 9, 8,  7,  5, NA, 4,  3,  2,  1)
+
+na2na(x > 8 | x == y)
+#>  [1]    NA FALSE FALSE    NA  TRUE    NA FALSE FALSE    NA  TRUE
+```
+
+- Extract or remove numbers from strings
 
 ``` r
 extract_nums_tgthr(c("sdff234", "12aaa34"))
@@ -75,18 +90,7 @@ remove_nums(c("12aaa34",  "adfsdf.344 -1.2 4"), trimws = TRUE)
 #> [1] "aaa"    "adfsdf"
 ```
 
--   scale vectors to have a specified min and max
-
-``` r
-normalise(1:10) # min = 0 max = 1
-#>  [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667
-#>  [8] 0.7777778 0.8888889 1.0000000
-scale_minmax(1:10, mn = -100, mx = 100) # min = `mn`, max = `mx`
-#>  [1] -100.00000  -77.77778  -55.55556  -33.33333  -11.11111   11.11111
-#>  [7]   33.33333   55.55556   77.77778  100.00000
-```
-
--   convert decimal integer to binary string
+- convert decimal integer to binary string
 
 ``` r
 int2bin(c(12, 5, NA, 90342))
@@ -94,7 +98,7 @@ int2bin(c(12, 5, NA, 90342))
 #> [4] "10110000011100110"
 ```
 
--   add trailing zeros to integer or string
+- add trailing zeros to integer or string
 
 ``` r
 x <- c(100010, 234,  1, 34)
@@ -104,14 +108,14 @@ add_zeros(x, len = 9) # can stipulate longer
 #> [1] "000100010" "000000234" "000000001" "000000034"
 ```
 
--   add new element to vector by index position
+- add new element to vector by index position
 
 ``` r
 add_by_position(LETTERS[1:6], "NEW", 5)
 #> [1] "A"   "B"   "C"   "D"   "NEW" "E"   "F"
 ```
 
--   get matrix with reverse diagnoal
+- get matrix with reverse diagnoal
 
 ``` r
 rev_diag(3)
@@ -129,7 +133,7 @@ rev_diag(6, x = 12)
 #> [6,]   12    0    0    0    0    0
 ```
 
--   add brackets
+- add brackets
 
 ``` r
 brackets(123)
@@ -138,7 +142,7 @@ brackets("foo", type = "square")
 #> [1] "[foo]"
 ```
 
--   recursively search environments to find where function defined
+- recursively search environments to find where function defined
 
 ``` r
 where(sum)
@@ -148,5 +152,5 @@ where("sd")
 #> attr(,"name")
 #> [1] "package:stats"
 #> attr(,"path")
-#> [1] "C:/Program Files/R/R-4.2.0/library/stats"
+#> [1] "C:/Program Files/R/R-4.3.0/library/stats"
 ```

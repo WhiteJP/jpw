@@ -42,6 +42,26 @@ library(jpw)
 
 Below are some examples of functions in jpw.
 
+### Simple statistical calcluations
+
+* left and right censor data
+
+```{r}
+censor_left(1:10, min = 5)
+censor_right(1:10, max = 5)
+censor_both(1:10, min = 3, max = 7)
+```
+
+* scale vectors to have a specified min and max
+
+```{r}
+normalise(1:10) # min = 0 max = 1
+scale_minmax(1:10, mn = -100, mx = 100) # min = `mn`, max = `mx`
+
+```
+
+### Other 
+
 * put vectors in prose format
 
 ```{r examples}
@@ -59,13 +79,6 @@ na2na(x > 8 | x == y)
 
 ```
 
-* left and right censor data
-
-```{r}
-censor_left(1:10, min = 5)
-censor_right(1:10, max = 5)
-censor_both(1:10, min = 3, max = 7)
-```
 
 * Extract or remove numbers from strings
 
@@ -73,14 +86,6 @@ censor_both(1:10, min = 3, max = 7)
 extract_nums_tgthr(c("sdff234", "12aaa34"))
 extract_nums_all(c("12aaa34", "-12.4 54.3", "adfsdf.344 -1.2 4"))
 remove_nums(c("12aaa34",  "adfsdf.344 -1.2 4"), trimws = TRUE)
-
-```
-
-* scale vectors to have a specified min and max
-
-```{r}
-normalise(1:10) # min = 0 max = 1
-scale_minmax(1:10, mn = -100, mx = 100) # min = `mn`, max = `mx`
 
 ```
 

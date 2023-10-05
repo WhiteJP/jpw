@@ -4,20 +4,27 @@ test_that("normalise() works ", {
     range(0, 1)
     )
   expect_equal(
+    range(normalise(10:100, 0, 100)),
+    range(.1, 1)
+  )
+  expect_equal(
     range(normalise(c(1:100, NA)), na.rm = TRUE),
     range(0, 1)
     )
 })
 
-
 test_that("scale_min_max works ", {
   expect_equal(
-    range(scale_minmax(1:100, mn = -123, mx = 8889)),
+    range(scale_minmax(1:100, out_min = -123, out_max = 8889)),
     range(-123, 8889)
     )
   expect_equal(
-    range(scale_minmax(c(1:100, NA), mn = -123, mx = 8889), na.rm = TRUE),
+    range(scale_minmax(c(1:100, NA), out_min = -123, out_max = 8889), na.rm = TRUE),
     range(-123, 8889)
+  )
+  expect_equal(
+    range(scale_minmax(4:10, in_min = 0, in_max = 10, out_min = 0, out_max = 100)),
+    range(40, 100)
   )
 })
 

@@ -9,7 +9,7 @@
 #'  are not often needed for analysis. See source code for list. Default is TRUE.
 #' @param ... additional arguments to pass to [readr::read_csv()]
 #'
-#
+#' @export
 read_csv_qualtrics <- function(path, remove_extra_cols = TRUE, ...){
 
   if(!file.exists(path)){

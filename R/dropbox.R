@@ -9,6 +9,9 @@
 #' @param version A string specifying the version of Dropbox to use, if 2 are
 #'  found on he machine. Can be either "personal" or "business" (default).
 #' @return A string with the path to the users Dropbox directory
+#'
+#' @export
+#' @rdname dropbox_funs
 find_dropbox_dir <- function(version = c("business", "personal")) {
 
   version <- match.arg(version)
@@ -46,8 +49,9 @@ find_dropbox_dir <- function(version = c("business", "personal")) {
   out_path
 }
 
-#' Get repository paths in Dropbox
-#'
+
+#'@export
+#'@rdname dropbox_funs
 get_dropbox_repo_dir <- function(
     repo_name = get_git_repo_name(),
     repos_subdir = "projects",
@@ -56,6 +60,8 @@ get_dropbox_repo_dir <- function(
   fs::path(dropbox_base_dir, repos_subdir, repo_name)
 }
 
+#'@export
+#'@rdname dropbox_funs
 get_dropbox_data_path <-  function(
     repos_subdir = "projects",
     repo_name = get_git_repo_name(),
@@ -64,6 +70,8 @@ get_dropbox_data_path <-  function(
   fs::path(get_dropbox_repo_dir(repo_name, repos_subdir, dropbox_base_dir), "data")
 }
 
+#'@export
+#'@rdname dropbox_funs
 get_dropbox_output_path <-  function(
     repos_subdir = "projects",
     repo_name = get_git_repo_name(),
@@ -72,7 +80,8 @@ get_dropbox_output_path <-  function(
   fs::path(get_dropbox_repo_dir(repo_name, repos_subdir, dropbox_base_dir), "output")
 }
 
-#
+#'@export
+#'@rdname dropbox_funs
 get_data_from_dropbox <- function(file_name){
   dropbox_data_path <- get_dropbox_data_path()
   file_path <- fs::path(dropbox_data_path, file_name)

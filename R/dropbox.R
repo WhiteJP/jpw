@@ -139,7 +139,7 @@ get_data_from_dropbox <- function(file_name, ...){
 
 
 get_git_repo_name <- function() {
-  config_file <- file.path(".git", "config")
+  config_file <- here::here(".git", "config")
   if (file.exists(config_file)) {
     config <- readLines(config_file)
     url_line <- grep("url = ", config, value = TRUE)

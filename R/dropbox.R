@@ -93,7 +93,7 @@ get_dropbox_output_path <-  function(
     dropbox_base_dir = find_dropbox_dir(),
     create_dir = FALSE
 ){
-  fs::path(
+  path <- fs::path(
     get_dropbox_repo_dir(repo_name, repos_subdir, dropbox_base_dir), "output"
   )
   if(!fs::dir_exists(path)){

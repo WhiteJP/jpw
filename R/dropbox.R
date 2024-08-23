@@ -50,14 +50,22 @@ find_dropbox_dir <- function(version = c("business", "personal")) {
 }
 
 
+#'@param create_dir logical. Whether to create the directory if it does not exist.
+#' Defaults to `FALSE`.
+#'
 #'@export
 #'@rdname dropbox_funs
 get_dropbox_repo_dir <- function(
     repo_name = get_git_repo_name(),
     repos_subdir = "projects",
-    dropbox_base_dir = find_dropbox_dir()
+    dropbox_base_dir = find_dropbox_dir(),
+    create_dir = FALSE
   ){
-  fs::path(dropbox_base_dir, repos_subdir, repo_name)
+  path <- fs::path(dropbox_base_dir, repos_subdir, repo_name)
+  if(!fs::dir_exists(path)){
+    if (create_dir) fs::dir_create(path) else stop(paste0(path, " does not exist"))
+  }
+  path
 }
 
 #'@export
@@ -65,9 +73,16 @@ get_dropbox_repo_dir <- function(
 get_dropbox_data_path <-  function(
     repos_subdir = "projects",
     repo_name = get_git_repo_name(),
-    dropbox_base_dir = find_dropbox_dir()
+    dropbox_base_dir = find_dropbox_dir(),
+    create_dir = FALSE
 ){
-  fs::path(get_dropbox_repo_dir(repo_name, repos_subdir, dropbox_base_dir), "data")
+  path <- fs::path(
+    get_dropbox_repo_dir(repo_name, repos_subdir, dropbox_base_dir), "data"
+  )
+  if(!fs::dir_exists(path)){
+    if (create_dir) fs::dir_create(path) else stop(paste0(path, " does not exist"))
+  }
+  path
 }
 
 #'@export
@@ -75,9 +90,16 @@ get_dropbox_data_path <-  function(
 get_dropbox_output_path <-  function(
     repos_subdir = "projects",
     repo_name = get_git_repo_name(),
-    dropbox_base_dir = find_dropbox_dir()
+    dropbox_base_dir = find_dropbox_dir(),
+    create_dir = FALSE
 ){
-  fs::path(get_dropbox_repo_dir(repo_name, repos_subdir, dropbox_base_dir), "output")
+  fs::path(
+    get_dropbox_repo_dir(repo_name, repos_subdir, dropbox_base_dir), "output"
+  )
+  if(!fs::dir_exists(path)){
+    if (create_dir) fs::dir_create(path) else stop(paste0(path, " does not exist"))
+  }
+  path
 }
 
 #'@export

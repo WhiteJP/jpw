@@ -34,7 +34,7 @@ get_dropbox_output_path(
   create_dir = FALSE
 )
 
-get_data_from_dropbox(file_name)
+get_data_from_dropbox(file_name, ...)
 }
 \arguments{
 \item{version}{A string specifying the version of Dropbox to use, if 2 are

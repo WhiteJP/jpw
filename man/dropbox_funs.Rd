@@ -13,19 +13,22 @@ find_dropbox_dir(version = c("business", "personal"))
 get_dropbox_repo_dir(
   repo_name = get_git_repo_name(),
   repos_subdir = "projects",
-  dropbox_base_dir = find_dropbox_dir()
+  dropbox_base_dir = find_dropbox_dir(),
+  create_dir = FALSE
 )
 
 get_dropbox_data_path(
   repos_subdir = "projects",
   repo_name = get_git_repo_name(),
-  dropbox_base_dir = find_dropbox_dir()
+  dropbox_base_dir = find_dropbox_dir(),
+  create_dir = FALSE
 )
 
 get_dropbox_output_path(
   repos_subdir = "projects",
   repo_name = get_git_repo_name(),
-  dropbox_base_dir = find_dropbox_dir()
+  dropbox_base_dir = find_dropbox_dir(),
+  create_dir = FALSE
 )
 
 get_data_from_dropbox(file_name)
@@ -33,6 +36,9 @@ get_data_from_dropbox(file_name)
 \arguments{
 \item{version}{A string specifying the version of Dropbox to use, if 2 are
 found on he machine. Can be either "personal" or "business" (default).}
+
+\item{create_dir}{logical. Whether to create the directory if it does not exist.
+Defaults to \code{FALSE}.}
 }
 \value{
 A string with the path to the users Dropbox directory

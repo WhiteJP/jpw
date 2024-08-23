@@ -131,7 +131,7 @@ get_dropbox_output_path <-  function(
 get_data_from_dropbox <- function(file_name, ...){
   dropbox_data_path <- get_dropbox_data_path(...)
   path <- fs::path(dropbox_data_path, file_name)
-  if(!fs::file_exists(file_path)){
+  if(!fs::file_exists(path)){
     stop(paste0(file_path, " not found in Dropbox"))
   }
   path

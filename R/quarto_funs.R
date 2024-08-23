@@ -48,6 +48,5 @@ quarto_render_to_dir <- function(
   fs::file_copy(output_files, fs::path(out_dir, basename(output_files)))
 
   if(render_in_tempt) fs::dir_delete(temp) #delete temp dir if in temp
-#
   invisible(fs::path(out_dir, basename(output_files)))
 }

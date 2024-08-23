@@ -92,6 +92,7 @@ get_dropbox_data_path <-  function(
       repo_name = repo_name,
       repos_subdir = repos_subdir,
       dropbox_base_dir = dropbox_base_dir,
+      create_dir = create_dir,
       ...
     ),
     "data"
@@ -116,6 +117,7 @@ get_dropbox_output_path <-  function(
       repo_name = repo_name,
       repos_subdir = repos_subdir,
       dropbox_base_dir = dropbox_base_dir,
+      create_dir = create_dir,
       ...
     ),
     "output"

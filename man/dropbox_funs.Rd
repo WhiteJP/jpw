@@ -11,6 +11,7 @@
 find_dropbox_dir(version = c("business", "personal"))
 
 get_dropbox_repo_dir(
+  ...,
   repo_name = get_git_repo_name(),
   repos_subdir = "projects",
   dropbox_base_dir = find_dropbox_dir(),
@@ -18,6 +19,7 @@ get_dropbox_repo_dir(
 )
 
 get_dropbox_data_path(
+  ...,
   repos_subdir = "projects",
   repo_name = get_git_repo_name(),
   dropbox_base_dir = find_dropbox_dir(),
@@ -25,6 +27,7 @@ get_dropbox_data_path(
 )
 
 get_dropbox_output_path(
+  ...,
   repos_subdir = "projects",
   repo_name = get_git_repo_name(),
   dropbox_base_dir = find_dropbox_dir(),
@@ -36,6 +39,19 @@ get_data_from_dropbox(file_name)
 \arguments{
 \item{version}{A string specifying the version of Dropbox to use, if 2 are
 found on he machine. Can be either "personal" or "business" (default).}
+
+\item{...}{character vector. Additional path components to be joined to the
+end of the path (before 'data', or 'output' are appended for \code{get_dropbox_data_path()}
+and \code{get_dropbox_output_path()}.}
+
+\item{repo_name}{character. Name of the repository. Defaults to the name of the
+current git repository found via \code{get_git_repo_name()}.}
+
+\item{repos_subdir}{character. Subdirectory within the Dropbox directory where
+the repository is stored. Defaults to "projects".}
+
+\item{dropbox_base_dir}{character. Path to the base Dropbox directory. Defaults to
+the Dropbox directory found via \code{find_dropbox_dir()}.}
 
 \item{create_dir}{logical. Whether to create the directory if it does not exist.
 Defaults to \code{FALSE}.}

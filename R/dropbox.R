@@ -50,18 +50,28 @@ find_dropbox_dir <- function(version = c("business", "personal")) {
 }
 
 
+#'@param repo_name character. Name of the repository. Defaults to the name of the
+#' current git repository found via `get_git_repo_name()`.
+#'@param repos_subdir character. Subdirectory within the Dropbox directory where
+#' the repository is stored. Defaults to "projects".
+#'@param dropbox_base_dir character. Path to the base Dropbox directory. Defaults to
+#' the Dropbox directory found via `find_dropbox_dir()`.
 #'@param create_dir logical. Whether to create the directory if it does not exist.
 #' Defaults to `FALSE`.
+#'@param ... character vector. Additional path components to be joined to the
+#' end of the path (before 'data', or 'output' are appended for `get_dropbox_data_path()`
+#' and `get_dropbox_output_path()`.
 #'
 #'@export
 #'@rdname dropbox_funs
 get_dropbox_repo_dir <- function(
+    ...,
     repo_name = get_git_repo_name(),
     repos_subdir = "projects",
     dropbox_base_dir = find_dropbox_dir(),
     create_dir = FALSE
   ){
-  path <- fs::path(dropbox_base_dir, repos_subdir, repo_name)
+  path <- fs::path(dropbox_base_dir, repos_subdir, repo_name, ...)
   if(!fs::dir_exists(path)){
     if (create_dir) fs::dir_create(path) else stop(paste0(path, " does not exist"))
   }
@@ -71,13 +81,20 @@ get_dropbox_repo_dir <- function(
 #'@export
 #'@rdname dropbox_funs
 get_dropbox_data_path <-  function(
+    ...,
     repos_subdir = "projects",
     repo_name = get_git_repo_name(),
     dropbox_base_dir = find_dropbox_dir(),
     create_dir = FALSE
 ){
   path <- fs::path(
-    get_dropbox_repo_dir(repo_name, repos_subdir, dropbox_base_dir), "data"
+    get_dropbox_repo_dir(
+      repo_name = repo_name,
+      repos_subdir = repos_subdir,
+      dropbox_base_dir = dropbox_base_dir,
+      ...
+    ),
+    "data"
   )
   if(!fs::dir_exists(path)){
     if (create_dir) fs::dir_create(path) else stop(paste0(path, " does not exist"))
@@ -88,13 +105,20 @@ get_dropbox_data_path <-  function(
 #'@export
 #'@rdname dropbox_funs
 get_dropbox_output_path <-  function(
+    ...,
     repos_subdir = "projects",
     repo_name = get_git_repo_name(),
     dropbox_base_dir = find_dropbox_dir(),
     create_dir = FALSE
 ){
   path <- fs::path(
-    get_dropbox_repo_dir(repo_name, repos_subdir, dropbox_base_dir), "output"
+    get_dropbox_repo_dir(
+      repo_name = repo_name,
+      repos_subdir = repos_subdir,
+      dropbox_base_dir = dropbox_base_dir,
+      ...
+    ),
+    "output"
   )
   if(!fs::dir_exists(path)){
     if (create_dir) fs::dir_create(path) else stop(paste0(path, " does not exist"))

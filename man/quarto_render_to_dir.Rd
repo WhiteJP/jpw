@@ -7,7 +7,7 @@
 quarto_render_to_dir(
   qmd_file,
   out_dir,
-  out_name = basename(qmd_file),
+  out_name = fs::path_file(qmd_file),
   render_in_temp = FALSE,
   ...
 )

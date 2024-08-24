@@ -139,6 +139,17 @@ get_data_from_dropbox <- function(file_name, ...){
   path
 }
 
+#'@export
+#'@rdname dropbox_funs
+to_dropbox_data <- function(file_name, ...){
+  fs::path(get_dropbox_data_path(...), file_name)
+}
+
+#'@export
+#'@rdname dropbox_funs
+to_dropbox_output <- function(file_name, ...){
+  fs::path(get_output_data_path(...), file_name)
+}
 
 get_git_repo_name <- function() {
   config_file <- here::here(".git", "config")

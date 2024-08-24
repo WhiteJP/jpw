@@ -17,19 +17,19 @@
 quarto_render_to_dir <- function(
     qmd_file,
     out_dir,
-    out_name = basename(qmd_file),
+    out_name = fs::path_file(qmd_file),
     render_in_temp = FALSE,
     ...) {
 
   # set directory to execute
   if(render_in_temp){
     render_dir <- tempfile()
-    dir.create(render_dir)
-    render_file <- fs::path(temp, basename(qmd_file))
+    fs::dir_create(render_dir)
+    render_file <- fs::path(render_dir, fs::path_file(qmd_file))
     fs::file_copy(qmd_file, render_file)
 
   } else {
-    render_dir <- dirname(qmd_file)
+    render_dir <- fs::path_dir(qmd_file)
     render_file <- qmd_file
   }
 
@@ -45,8 +45,8 @@ quarto_render_to_dir <- function(
   )
 
   # copy to output dir
-  fs::file_copy(output_files, fs::path(out_dir, basename(output_files)))
+  fs::file_copy(output_files, fs::path(out_dir, fs::path_file(output_files)))
 
-  if(render_in_tempt) fs::dir_delete(temp) #delete temp dir if in temp
-  invisible(fs::path(out_dir, basename(output_files)))
+  if(render_in_temp) fs::dir_delete(render_dir) #delete temp dir if in temp
+  invisible(fs::path(out_dir, fs::path_file(output_files)))
 }

@@ -3,30 +3,20 @@
 \name{find_dropbox_dir}
 \alias{find_dropbox_dir}
 \alias{get_dropbox_repo_dir}
-\alias{get_dropbox_data_path}
-\alias{get_dropbox_output_path}
-\alias{get_data_from_dropbox}
-\title{Find users Dropbox base directory}
+\alias{dropbox_path}
+\alias{to_dropbox}
+\title{Functions for integrating with dropbox}
 \usage{
 find_dropbox_dir(version = c("business", "personal"))
 
 get_dropbox_repo_dir(
-  ...,
   repo_name = get_git_repo_name(),
   repos_subdir = "projects",
   dropbox_base_dir = find_dropbox_dir(),
   create_dir = FALSE
 )
 
-get_dropbox_data_path(
-  ...,
-  repos_subdir = "projects",
-  repo_name = get_git_repo_name(),
-  dropbox_base_dir = find_dropbox_dir(),
-  create_dir = FALSE
-)
-
-get_dropbox_output_path(
+dropbox_path(
   ...,
   repos_subdir = "projects",
   repo_name = get_git_repo_name(),
@@ -34,21 +24,24 @@ get_dropbox_output_path(
   create_dir = FALSE
 )
 
-get_data_from_dropbox(file_name, ...)
+to_dropbox(
+  ...,
+  repos_subdir = "projects",
+  repo_name = get_git_repo_name(),
+  dropbox_base_dir = find_dropbox_dir(),
+  create_dir = FALSE
+)
 }
 \arguments{
 \item{version}{A string specifying the version of Dropbox to use, if 2 are
-found on he machine. Can be either "personal" or "business" (default).}
+found on the machine. Can be either "personal" or "business" (default).}
 
-\item{...}{character vector. Additional path components to be joined to the
-end of the path (before 'data', or 'output' are appended for \code{get_dropbox_data_path()}
-and \code{get_dropbox_output_path()}.}
-
-\item{repo_name}{character. Name of the repository. Defaults to the name of the
-current git repository found via \code{get_git_repo_name()}.}
+\item{repo_name}{character. Name of the git repository. Defaults to the name of the
+current git repository found via searching the \code{git.config} of the current R
+project, via \code{get_git_repo_name()}.}
 
 \item{repos_subdir}{character. Subdirectory within the Dropbox directory where
-the repository is stored. Defaults to "projects".}
+each repository subdirectory is found. Defaults to "projects".}
 
 \item{dropbox_base_dir}{character. Path to the base Dropbox directory. Defaults to
 the Dropbox directory found via \code{find_dropbox_dir()}.}
@@ -57,9 +50,24 @@ the Dropbox directory found via \code{find_dropbox_dir()}.}
 Defaults to \code{FALSE}.}
 }
 \value{
-A string with the path to the users Dropbox directory
+A path string returned by fs::path() to the relevant directory/file.
 }
 \description{
-This function tries to find the users Dropbox directory by looking for the
+A set of functions for easy integration with dropbox. This envisages a sister
+directory in the users dropbox (defaulrs to "projects", with a subdir for
+each repository) where are all non-code files (data, output, papers, etc.)
+can be stored and easily accessed, yet keeping the github repository clean.
+}
+\details{
+\code{find_dropbox_dir()}tries to find the users Dropbox directory by looking for the
 info.json file in the Dropbox directory of the users appdata.
+
+\code{get_dropbox_repo_dir()} returns the path to the directory where the non-code
+files (data, output, papers, etc.) for a repository are stored in Dropbox.
+
+\code{dropbox_path()} extends \code{get_dropbox_repo_dir()} by allowing additional path
+components to be joined to the end of the path with \code{fs::path()}.
+
+\code{to_dropbox()} is useful for saving files to the Dropbox directory. It extends
+\code{dropbox_path()} by creating the directory (but not the file) if it does not exist.
 }

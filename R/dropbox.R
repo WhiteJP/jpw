@@ -1,14 +1,26 @@
 
-# Functions for integrating with dropbox ----------------------------------
-
-#' Find users Dropbox base directory
+#' Functions for integrating with dropbox
 #'
-#' This function tries to find the users Dropbox directory by looking for the
-#' info.json file in the Dropbox directory of the users appdata.
+#' A set of functions for easy integration with dropbox. This envisages a sister
+#' directory in the users dropbox (defaulrs to "projects", with a subdir for
+#' each repository) where are all non-code files (data, output, papers, etc.)
+#' can be stored and easily accessed, yet keeping the github repository clean.
+#'
+#' `find_dropbox_dir()`tries to find the users Dropbox directory by looking for the
+#'  info.json file in the Dropbox directory of the users appdata.
+#'
+#' `get_dropbox_repo_dir()` returns the path to the directory where the non-code
+#'  files (data, output, papers, etc.) for a repository are stored in Dropbox.
+#'
+#' `dropbox_path()` extends `get_dropbox_repo_dir()` by allowing additional path
+#'  components to be joined to the end of the path with `fs::path()`.
+#'
+#' `to_dropbox()` is useful for saving files to the Dropbox directory. It extends
+#' `dropbox_path()` by creating the directory (but not the file) if it does not exist.
 #'
 #' @param version A string specifying the version of Dropbox to use, if 2 are
-#'  found on he machine. Can be either "personal" or "business" (default).
-#' @return A string with the path to the users Dropbox directory
+#'  found on the machine. Can be either "personal" or "business" (default).
+#' @return A path string returned by fs::path() to the relevant directory/file.
 #'
 #' @export
 #' @rdname dropbox_funs
@@ -46,41 +58,41 @@ find_dropbox_dir <- function(version = c("business", "personal")) {
     out_path <- info[[version]]$path
   }
 
-  out_path
+  fs::path(out_path)
 }
 
 
-#'@param repo_name character. Name of the repository. Defaults to the name of the
-#' current git repository found via `get_git_repo_name()`.
+#'@param repo_name character. Name of the git repository. Defaults to the name of the
+#' current git repository found via searching the `git.config` of the current R
+#' project, via `get_git_repo_name()`.
 #'@param repos_subdir character. Subdirectory within the Dropbox directory where
-#' the repository is stored. Defaults to "projects".
+#' each repository subdirectory is found. Defaults to "projects".
 #'@param dropbox_base_dir character. Path to the base Dropbox directory. Defaults to
 #' the Dropbox directory found via `find_dropbox_dir()`.
 #'@param create_dir logical. Whether to create the directory if it does not exist.
 #' Defaults to `FALSE`.
-#'@param ... character vector. Additional path components to be joined to the
-#' end of the path (before 'data', or 'output' are appended for `get_dropbox_data_path()`
-#' and `get_dropbox_output_path()`.
 #'
 #'@export
 #'@rdname dropbox_funs
 get_dropbox_repo_dir <- function(
-    ...,
     repo_name = get_git_repo_name(),
     repos_subdir = "projects",
     dropbox_base_dir = find_dropbox_dir(),
     create_dir = FALSE
   ){
-  path <- fs::path(dropbox_base_dir, repos_subdir, repo_name, ...)
+  path <- fs::path(dropbox_base_dir, repos_subdir, repo_name)
   if(!fs::dir_exists(path)){
     if (create_dir) fs::dir_create(path) else stop(paste0(path, " does not exist"))
   }
   path
 }
 
+#'#'@param ... character arguments. Additional path components to be joined to the
+#' end of the path with `fs::path()`.
+#'
 #'@export
 #'@rdname dropbox_funs
-get_dropbox_data_path <-  function(
+dropbox_path <-  function(
     ...,
     repos_subdir = "projects",
     repo_name = get_git_repo_name(),
@@ -92,10 +104,9 @@ get_dropbox_data_path <-  function(
       repo_name = repo_name,
       repos_subdir = repos_subdir,
       dropbox_base_dir = dropbox_base_dir,
-      create_dir = create_dir,
-      ...
+      create_dir = FALSE # can create in next step
     ),
-    "data"
+    ...
   )
   if(!fs::dir_exists(path)){
     if (create_dir) fs::dir_create(path) else stop(paste0(path, " does not exist"))
@@ -105,51 +116,31 @@ get_dropbox_data_path <-  function(
 
 #'@export
 #'@rdname dropbox_funs
-get_dropbox_output_path <-  function(
-    ...,
-    repos_subdir = "projects",
-    repo_name = get_git_repo_name(),
-    dropbox_base_dir = find_dropbox_dir(),
-    create_dir = FALSE
+to_dropbox <- function(
+  ...,
+  repos_subdir = "projects",
+  repo_name = get_git_repo_name(),
+  dropbox_base_dir = find_dropbox_dir(),
+  create_dir = FALSE
 ){
   path <- fs::path(
-    get_dropbox_repo_dir(
-      repo_name = repo_name,
+    dropbox_path(
       repos_subdir = repos_subdir,
+      repo_name = repo_name,
       dropbox_base_dir = dropbox_base_dir,
-      create_dir = create_dir,
-      ...
+      create_dir = FALSE # can create in next step
     ),
-    "output"
+    ...
   )
-  if(!fs::dir_exists(path)){
-    if (create_dir) fs::dir_create(path) else stop(paste0(path, " does not exist"))
+  out_dir <- fs::path_dir(path)
+  if(!fs::dir_exists(out_dir)){
+    if (create_dir) fs::dir_create(out_dir) else stop(paste0(out_dir, " does not exist"))
   }
   path
 }
 
-#'@export
-#'@rdname dropbox_funs
-get_data_from_dropbox <- function(file_name, ...){
-  dropbox_data_path <- get_dropbox_data_path(...)
-  path <- fs::path(dropbox_data_path, file_name)
-  if(!fs::file_exists(path)){
-    stop(paste0(file_path, " not found in Dropbox"))
-  }
-  path
-}
 
-#'@export
-#'@rdname dropbox_funs
-to_dropbox_data <- function(file_name, ...){
-  fs::path(get_dropbox_data_path(...), file_name)
-}
-
-#'@export
-#'@rdname dropbox_funs
-to_dropbox_output <- function(file_name, ...){
-  fs::path(get_output_data_path(...), file_name)
-}
+# Helpers -----------------------------------------------------------------
 
 get_git_repo_name <- function() {
   config_file <- here::here(".git", "config")
@@ -164,4 +155,3 @@ get_git_repo_name <- function() {
   warning("Could not find Git repository name")
   return(NULL)
 }
-

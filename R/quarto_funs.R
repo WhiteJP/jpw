@@ -37,26 +37,9 @@ quarto_render_to_dir <- function(
   # Render
   quarto::quarto_render(input = render_file, ...)
 
-  # Move output files to output directory
-  # (match all files with same name except .qmd)
-  output_files <- fs::dir_ls(
-    render_dir,
-    regexp = exclude_r_files_regex(fs::path_file(render_file)),
-    perl = TRUE
-  )
+  # Move output files to output directory, and delete in render directory
+  handle_output_files_and_dirs(render_dir, out_dir, render_file, overwrite, render_in_temp)
 
-  # copy to output dir
-  fs::file_copy(
-    output_files,
-    fs::path(out_dir, fs::path_file(output_files)),
-    overwrite = overwrite
-  )
-
-  if(render_in_temp) {
-    fs::dir_delete(render_dir)
-  } else {
-    fs::file_delete(output_files)
-  }
   final_path <- fs::path(out_dir, fs::path_file(output_files))
   invisible(final_path)
 }
@@ -75,4 +58,37 @@ exclude_r_files_regex <- function(out_name) {
     ".*",    # Any characters
     base_name  # The base name of the output file
   )
+}
+
+handle_output_files_and_dirs <- function(render_dir, out_dir, render_file, overwrite = FALSE, render_in_temp = FALSE) {
+  # List all files and directories
+  output_items <- fs::dir_ls(
+    render_dir,
+    regexp = exclude_r_files_regex(fs::path_file(render_file)),
+    type = "any",
+    perl = TRUE
+  )
+
+  # Copy files and directories to output dir
+  for (item in output_items) {
+    dest_path <- fs::path(out_dir, fs::path_rel(item, render_dir))
+    if (fs::is_file(item)) {
+      fs::file_copy(item, dest_path, overwrite = overwrite)
+    } else if (fs::is_dir(item)) {
+      fs::dir_copy(item, dest_path, overwrite = overwrite)
+    }
+  }
+
+  # Delete original files and directories
+  if (render_in_temp) {
+    fs::dir_delete(render_dir)
+  } else {
+    for (item in output_items) {
+      if (fs::is_file(item)) {
+        fs::file_delete(item)
+      } else if (fs::is_dir(item)) {
+        fs::dir_delete(item)
+      }
+    }
+  }
 }

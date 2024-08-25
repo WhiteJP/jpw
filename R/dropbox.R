@@ -100,7 +100,7 @@ dropbox_path <-  function(
     repo_name = repo_name,
     repos_subdir = repos_subdir,
     dropbox_base_dir = dropbox_base_dir,
-    create_dir = create_dir
+    create_dir = FALSE # create the dir in later step
   )
 
   path <- fs::path(repo_dir, ...)
@@ -126,7 +126,6 @@ dropbox_path <-  function(
 
   path
 }
-
 
 # Helpers -----------------------------------------------------------------
 

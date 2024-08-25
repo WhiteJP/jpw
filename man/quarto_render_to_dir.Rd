@@ -7,8 +7,8 @@
 quarto_render_to_dir(
   qmd_file,
   out_dir,
-  out_name = fs::path_file(qmd_file),
   render_in_temp = FALSE,
+  overwrite = TRUE,
   ...
 )
 }
@@ -17,10 +17,11 @@ quarto_render_to_dir(
 
 \item{out_dir}{string. path to output directory in which to save .qmd output}
 
-\item{out_name}{string. corresponding to file name of output file.}
-
 \item{render_in_temp}{logical. whether to render in a temporary directory or in
 the same directory as the input file. Defaults to \code{FALSE}.}
+
+\item{overwrite}{logical. whether to overwrite existing files in the output
+directory.}
 
 \item{...}{passed to quarto_render}
 }

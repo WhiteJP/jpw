@@ -73,7 +73,6 @@ exclude_r_files_regex <- function(out_name) {
     "(qmd|rmd|rmarkdown|r|rdata|rds)$",  # R-related extensions
     ")",     # Negative lookahead end
     ".*",    # Any characters
-    base_name,  # The base name of the output file
-    "\\."    # Followed by a dot
+    base_name  # The base name of the output file
   )
 }

@@ -15,9 +15,6 @@
 #' `dropbox_path()` extends `get_dropbox_repo_dir()` by allowing additional path
 #'  components to be joined to the end of the path with `fs::path()`.
 #'
-#' `to_dropbox()` is useful for saving files to the Dropbox directory. It extends
-#' `dropbox_path()` by creating the directory (but not the file) if it does not exist.
-#'
 #' @param version A string specifying the version of Dropbox to use, if 2 are
 #'  found on the machine. Can be either "personal" or "business" (default).
 #' @return A path string returned by fs::path() to the relevant directory/file.
@@ -99,43 +96,34 @@ dropbox_path <-  function(
     dropbox_base_dir = find_dropbox_dir(),
     create_dir = FALSE
 ){
-  path <- fs::path(
-    get_dropbox_repo_dir(
-      repo_name = repo_name,
-      repos_subdir = repos_subdir,
-      dropbox_base_dir = dropbox_base_dir,
-      create_dir = FALSE # can create in next step
-    ),
-    ...
+  repo_dir <- get_dropbox_repo_dir(
+    repo_name = repo_name,
+    repos_subdir = repos_subdir,
+    dropbox_base_dir = dropbox_base_dir,
+    create_dir = create_dir
   )
-  if(!fs::dir_exists(path)){
-    if (create_dir) fs::dir_create(path) else stop(paste0(path, " does not exist"))
-  }
-  path
-}
 
-#'@export
-#'@rdname dropbox_funs
-to_dropbox <- function(
-  ...,
-  repos_subdir = "projects",
-  repo_name = get_git_repo_name(),
-  dropbox_base_dir = find_dropbox_dir(),
-  create_dir = FALSE
-){
-  path <- fs::path(
-    dropbox_path(
-      repos_subdir = repos_subdir,
-      repo_name = repo_name,
-      dropbox_base_dir = dropbox_base_dir,
-      create_dir = FALSE # can create in next step
-    ),
-    ...
-  )
-  out_dir <- fs::path_dir(path)
-  if(!fs::dir_exists(out_dir)){
-    if (create_dir) fs::dir_create(out_dir) else stop(paste0(out_dir, " does not exist"))
+  path <- fs::path(repo_dir, ...)
+
+  if (fs::is_file(path)) {
+    # If it's a file, check if its parent directory exists
+    parent_dir <- fs::path_dir(path)
+    if (!fs::dir_exists(parent_dir)) {
+      if (create_dir) {
+        fs::dir_create(parent_dir)
+      } else {
+        stop(paste0("Parent directory ", parent_dir, " does not exist"))
+      }
+    }
+  } else if (!fs::dir_exists(path)) {
+    # If it's not a file and the directory doesn't exist
+    if (create_dir) {
+      fs::dir_create(path)
+    } else {
+      stop(paste0("Directory ", path, " does not exist"))
+    }
   }
+
   path
 }
 

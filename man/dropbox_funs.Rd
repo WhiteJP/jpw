@@ -4,7 +4,6 @@
 \alias{find_dropbox_dir}
 \alias{get_dropbox_repo_dir}
 \alias{dropbox_path}
-\alias{to_dropbox}
 \title{Functions for integrating with dropbox}
 \usage{
 find_dropbox_dir(version = c("business", "personal"))
@@ -17,14 +16,6 @@ get_dropbox_repo_dir(
 )
 
 dropbox_path(
-  ...,
-  repos_subdir = "projects",
-  repo_name = get_git_repo_name(),
-  dropbox_base_dir = find_dropbox_dir(),
-  create_dir = FALSE
-)
-
-to_dropbox(
   ...,
   repos_subdir = "projects",
   repo_name = get_git_repo_name(),
@@ -67,7 +58,4 @@ files (data, output, papers, etc.) for a repository are stored in Dropbox.
 
 \code{dropbox_path()} extends \code{get_dropbox_repo_dir()} by allowing additional path
 components to be joined to the end of the path with \code{fs::path()}.
-
-\code{to_dropbox()} is useful for saving files to the Dropbox directory. It extends
-\code{dropbox_path()} by creating the directory (but not the file) if it does not exist.
 }

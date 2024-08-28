@@ -38,10 +38,11 @@ quarto_render_to_dir <- function(
   quarto::quarto_render(input = render_file, ...)
 
   # Move output files to output directory, and delete in render directory
-  handle_output_files_and_dirs(render_dir, out_dir, render_file, overwrite, render_in_temp)
+  output_paths <- handle_output_files_and_dirs(
+    render_dir, out_dir, render_file, overwrite, render_in_temp
+  )
 
-  final_path <- fs::path(out_dir, fs::path_file(output_files))
-  invisible(final_path)
+  invisible(output_paths)
 }
 
 
@@ -54,7 +55,7 @@ exclude_r_files_regex <- function(out_name) {
     "(?!",   # Negative lookahead start
     ".*\\.",  # Any characters followed by a dot
     "(qmd|rmd|rmarkdown|r|rdata|rds)$",  # R-related extensions
-    ")",     # Negative lookahead end
+    ")",     # Negative look-ahead end
     ".*",    # Any characters
     base_name  # The base name of the output file
   )
@@ -91,4 +92,6 @@ handle_output_files_and_dirs <- function(render_dir, out_dir, render_file, overw
       }
     }
   }
+
+  output_items
 }

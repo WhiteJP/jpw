@@ -1,4 +1,4 @@
-#' Render Quarto docment to another directory
+#' Render Quarto document to another directory
 #'
 #' Currently `quarto::quarto_render()` does not allow to render quarto to another
 #' directory. This function creates a temporary directory within which to render

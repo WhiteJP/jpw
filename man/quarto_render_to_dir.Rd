@@ -2,7 +2,7 @@
 % Please edit documentation in R/quarto_funs.R
 \name{quarto_render_to_dir}
 \alias{quarto_render_to_dir}
-\title{Render Quarto docment to another directory}
+\title{Render Quarto document to another directory}
 \usage{
 quarto_render_to_dir(
   qmd_file,

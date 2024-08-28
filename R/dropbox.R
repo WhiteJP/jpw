@@ -105,7 +105,7 @@ dropbox_path <-  function(
 
   path <- fs::path(repo_dir, ...)
 
-  if (fs::is_file(path)) {
+  if (is_file_path(path)) {
     # If it's a file, check if its parent directory exists
     parent_dir <- fs::path_dir(path)
     if (!fs::dir_exists(parent_dir)) {
@@ -141,4 +141,9 @@ get_git_repo_name <- function() {
   }
   warning("Could not find Git repository name")
   return(NULL)
+}
+
+is_file_path <- function(path) {
+  ext <- fs::path_ext(path)
+  nchar(ext) != 0
 }

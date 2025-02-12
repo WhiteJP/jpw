@@ -100,7 +100,7 @@ dropbox_path <-  function(
     repo_name = repo_name,
     repos_subdir = repos_subdir,
     dropbox_base_dir = dropbox_base_dir,
-    create_dir = FALSE # create the dir in later step
+    create_dir = create_dir
   )
 
   path <- fs::path(repo_dir, ...)
@@ -110,7 +110,7 @@ dropbox_path <-  function(
     parent_dir <- fs::path_dir(path)
     if (!fs::dir_exists(parent_dir)) {
       if (create_dir) {
-        fs::dir_create(parent_dir)
+        fs::dir_create(parent_dir, recursive = TRUE)
       } else {
         stop(paste0("Parent directory ", parent_dir, " does not exist"))
       }
@@ -118,7 +118,7 @@ dropbox_path <-  function(
   } else if (!fs::dir_exists(path)) {
     # If it's not a file and the directory doesn't exist
     if (create_dir) {
-      fs::dir_create(path)
+      fs::dir_create(path, recursive = TRUE)
     } else {
       stop(paste0("Directory ", path, " does not exist"))
     }

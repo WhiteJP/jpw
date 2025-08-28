@@ -28,7 +28,7 @@ read_csv_qualtrics <- function(path, remove_extra_cols = TRUE, ...){
     path,
     skip = 3,
     col_names = strsplit(readLines(path, n = 1), ",")[[1]],
-    col_select = !tidyr::all_of(cols_to_remove),
+    col_select = -tidyr::all_of(cols_to_remove),
     ...
   )
 }

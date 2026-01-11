@@ -136,7 +136,17 @@ get_git_repo_name <- function() {
     url_line <- grep("url = ", config, value = TRUE)
     if (length(url_line) > 0) {
       repo_name <- sub(".*/(.*?)\\.git", "\\1", url_line)
-      return(repo_name)
+
+      # Filter to valid repo names only (no tabs, no "=", no URLs
+      # that can happen from having subtrees to overleaf for example
+      valid <- repo_name[!grepl("^\t|=|://", repo_name)]
+
+      if (length(valid) == 0) {
+        warning("Could not determine Git repository name")
+        return(NULL)
+      }
+
+      return(valid[1])
     }
   }
   warning("Could not find Git repository name")

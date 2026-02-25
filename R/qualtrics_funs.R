@@ -17,7 +17,7 @@ read_csv_qualtrics <- function(path, remove_extra_cols = TRUE, ...){
   }
 
   cols_to_remove <- if(remove_extra_cols) {
-    c("Status", "IPAddress", "Progress", "RecipientLastName", "RecipientFirstName",
+    c("Status", "IPAddress", "RecipientLastName", "RecipientFirstName",
       "RecipientEmail", "ExternalReference", "LocationLatitude", "LocationLongitude",
       "DistributionChannel")
   } else {
